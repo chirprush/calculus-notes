@@ -1,0 +1,912 @@
+\chapter{More Complex Derivatives}
+
+\section{The Chain Rule}
+
+This section tackles the Chain Rule, a fundamental part of evaluating derivatives of more complex, composed functions.
+
+\subsection{Introduction}
+
+Suppose that we were asked to find the derivative of the function
+
+\[ y = \left( 2x + 3 \right)^3 \]
+
+If we haphazardly apply the power rule, this would result in
+
+\[ y = 3 \left( 2x + 3 \right)^2 \]
+
+However, this is clearly \textbf{not} correct. If we expand the original polynomial function and differentiate that, we see that it should be
+
+\begin{align}
+    y = \> &\left( 2x + 3 \right)^3 \\
+    = \> &\left( 4x^2 + 12x + 9 \right) \left( 2x + 3 \right) \\
+    = \> &8x^3 + 36x^2 + 54x + 27 \\
+    \implies y^\prime = \> &24x^2 + 72x + 54 \\
+    = \> &6 \left( 4x^2 + 12x + 9 \right) \\
+    = \> &6 \left( 2x + 3 \right)^2
+\end{align}
+
+You may notice that, interestingly, the actual derivative is the incorrect derivative multiplied by the value \( 2 \). You may also recognize that the derivative of the expression inside the parentheses is also \( 2 \). This multiplication of the outside derivative and the inside derivative forms the basis of the Chain Rule, also called the "Outside Inside" Rule.
+
+\begin{definition}{The Chain Rule}
+    The derivative of the composition of two (or more) functions is equal to the derivative of the first (with the argument unchanged) multiplied by the derivative of the second. This can be expressed as
+    
+    \[ \dfrac{d}{dx} \left( f \circ g \right) = f^\prime \left( g \left( x \right) \right) g^\prime \left( x \right) \]
+\end{definition}
+
+\begin{example}{Applying the Chain Rule (powers)}
+    Consider the function
+    
+    \[ y = \left( 2x^2 - 5x + 2 \right)^3 \]
+    
+    While we can apply the power rule, we must also take care to multiply by the derivative of the inside of the function, yielding
+    
+    \begin{align}
+        y^\prime = \> &3 \left( \dfrac{d}{dx} \left( 2x^2 - 5x + 2 \right) \right) \left( 2x^2 - 5x + 2 \right)^2 \\
+        = \> &3 \left( 4x - 5 \right) \left( 2x^2 - 5x + 2 \right)^2 \\
+        = \> &3 \left( 4x - 5 \right) \left( 2x - 1 \right)^2 \left( x - 2 \right)^2
+    \end{align}
+\end{example}
+
+This is not only applicable to powers but other functions as well, including trigonometric functions.
+
+\begin{example}{Applying the Chain Rule (trigonometry)}
+    Find the derivative of the function
+    
+    \[ y = \tan{\left( 3x \right)} \]
+    
+    Here, we can take the derivative of the outside tangent function, being careful not to change the inner angle and then multiply by the derivative of the inner angle.
+    
+    \begin{align}
+        y^\prime = \> &\left( \dfrac{d}{dx} \left( 3x \right) \right) \sec^2{\left( 3x \right)} \\
+        = \> &\left( \dfrac{d}{dx} \left( 3x \right) \right) \sec^2{\left( 3x \right)} \\
+        = \> &3 \sec^2{\left( 3x \right)}
+    \end{align}
+\end{example}
+
+\begin{example}{Applying the Chain Rule (combination)}
+    Find the derivative of the function
+    
+    \[ y = \sin^2{\left( 4x \right)} \]
+    
+    First, it will help clarify the situation to rewrite the function as
+    
+    \[ y = \left( \sin{4x} \right)^2 \]
+    
+    Now, we can differentiate using the Chain Rule twice.
+    
+    \begin{align}
+        y^\prime = \> &2 \left( \sin{4x} \right) \left( \dfrac{d}{dx} \left( \sin{4x} \right) \right) \\
+        = \> &2 \left( \sin{4x} \right) \left( \cos{4x} \right) \left( \dfrac{d}{dx} \left( 4x \right) \right) \\
+        = \> &2 \left( \sin{4x} \right) \left( \cos{4x} \right) \left( 4 \right) \\
+        = \> &8\sin{4x} \cos{4x}
+    \end{align}
+\end{example}
+
+\begin{tip}
+    Notice that, whether it be a function or a power, the inner argument does not change when using the Chain Rule. If you find yourself changing the inside of a function or power, you may be doing something wrong.
+\end{tip}
+
+\subsection{Another Look: Rates of Change}
+
+To intuit why this happens, let us move from a mathematical context to a more scientific context. Consider a unit of speed such as
+
+\[ \num{3} \> \dfrac{\si{\kilo\meter}}{\si{\minute}} \]
+
+\textbf{How would you manipulate this ratio in order to change it from kilometers per minute to kilometers per hour?} Using our knowledge of the relation between the minute and hour, specifically that \( \SI{60}{\minute} = \SI{1}{\hour} \), we can multiply this rate and cancel units to get
+
+\[ \dfrac{\num{3} \> \si{\kilo\meter}}{\num{1} \> \cancel{\si{\minute}}} \cdot \dfrac{\num{60} \> \cancel{\si{\minute}}}{\num{1} \> \si{\hour}} = \num{180} \> \dfrac{\si{\kilo\meter}}{\si{\hour}} \]
+
+Just like using units, at the heart of Calculus are ratios and rates between values and functions. In fact, the relation between units and elements in Calculus (particularly derivatives and integrals) is what makes Calculus so applicable for physics.
+
+Moving onto a more mathematical example, say that we have the relations
+
+\begin{align*}
+    y &= v^2, \\
+    v &= \sin{u}, \\
+    u &= 5x^2
+\end{align*}
+
+and we wish to find \( \frac{d}{dx} \).
+
+Using our knowledge of derivatives, we can find relations or ratios between the individual variables:
+
+\begin{align*}
+    \dfrac{dy}{dv} &= 2v, \\
+    \dfrac{dv}{du} &= \cos{u}, \\
+    \dfrac{du}{dx} &= 10x
+\end{align*}
+
+\begin{tip}
+    Remember, when using the \( \frac{dy}{dx} \) notation, we are finding the relation of how \( y \) changes \defterm{with respect to} \( x \). Think of the \( d \) as an operator that means "a little bit of."
+\end{tip}
+
+Just like how we used units to convert one relation to another, we can do the same here.
+
+\begin{align}
+    \dfrac{dy}{dx} = \> &\dfrac{dy}{dv} \cdot \dfrac{dv}{du} \cdot \dfrac{du}{dx} \\
+    = \> &\dfrac{dy}{\cancel{dv}} \cdot \dfrac{\cancel{dv}}{\cancel{du}} \cdot \dfrac{\cancel{du}}{dx} \\
+    = \> &2v \cdot \cos{u} \cdot 10x \\
+    = \> &2 \sin{\left( 5x^2 \right)} \cdot \cos{\left( 5x^2 \right)} \cdot 10x \\
+    = \> &20x \sin{\left( 5x^2 \right)}\cos{\left( 5x^2 \right)} \\
+\end{align}
+
+This chain of cancelling of the rates of change is where the \textit{Chain} Rule gets its name.
+
+We can also come up with these relations by ourselves, allowing us to see where the Chain Rule or "Outside Inside" shortcut comes from and why it is based on the composition of functions.
+
+\begin{example}{decomposing functions for the Chain Rule}
+Consider the function
+
+\[ y = \sin{\left( 7 - 5x \right)} \]
+
+We can introduce a new variable to deconstruct the function into two relations
+
+\[
+    y = \sin{u}, \quad u = 7 - 5x
+\]
+
+Differentiating these individually, we get
+
+\[
+    \dfrac{dy}{du} = \cos{u}, \quad \dfrac{du}{dx} = -5
+\]
+
+Once again, we can multiply these rates to cancel, leaving us with
+
+\begin{align}
+    \dfrac{dy}{dx} = \> &\dfrac{dy}{du} \cdot \dfrac{du}{dx} \\
+    = \> &\dfrac{dy}{\cancel{du}} \cdot \dfrac{\cancel{du}}{dx} \\
+    = \> &\cos{u} \cdot -5 \\
+    = \> &-5 \cos{\left( 7 - 5x \right)}
+\end{align}
+
+\end{example}
+
+\begin{tip}
+    Using this verbose form of the Chain Rule is definitely \textbf{not} required, but it is helpful to understand why you are doing the operations that you are, instilling confidence in your answer.
+\end{tip}
+
+\subsection{Recognizing Derivatives from Limits}
+
+Another exercise that you may come across will ask you to evaluate a complicated limit such as
+
+\[ \lim_{h \to 0} \dfrac{\tan{\left(3 \left(x + h \right) \right)} - \tan{\left( 3x \right)}}{h} \]
+
+While, theoretically, you could try to use trigonometry and algebra to simplify this, a much faster method would be to notice that this is the limit definition of the derivative of \( y = \tan{3x} \). From here, we can differentiate and arrive much quicker to the answer of \( y^\prime = 3\sec^2{3x} \).
+
+\begin{example}{limits to derivatives}
+    Consider the limit
+    
+    \[ \lim_{h \to 0} \dfrac{\sec{\left( 5x^2 \right)} - \sec{\left( 5 \left( x + h \right)^2 \right)}}{h} \]
+    
+    Paying careful attention to the minus sign, we can see that this can be rewritten as
+    
+    \begin{align}
+        &\dfrac{d}{dx} \left( -\sec{\left( 5x^2 \right)} \right) \\
+        = \> &-10x \sec{\left( 5x^2 \right)} \tan{\left( 5x^2 \right)}
+    \end{align}
+\end{example}
+
+\section{Implicit Differentiation}
+
+\subsection{Explicit and Implicit Equations}
+
+Up until now, we have been taking the derivatives of \defterm{explicit} equations, or those that directly give you a \( y \) expression.
+
+\begin{example}{explicit equation}
+    The function
+    
+    \[ y = x^2 \]
+    
+    is an explicit function. We can take the derivative of both sides to get
+    
+    \[ y^\prime = 2x \]
+\end{example}
+
+However, not all equations are in the form \( y = f \left( x \right) \). We call these \defterm{implicit} equations.
+
+\begin{example}{implicit equation}
+    The equation for a circle is given as
+    
+    \[ x^2 + y^2 = 1 \]
+    
+    Because the \( y \) variable is not isolated, this is an implicit equation.
+\end{example}
+
+How do we take the derivative of this?
+
+\defterm{Implicit differentiation} is when you take the derivative of an implicit equation. It is almost exactly similar to normal differentiation in that you take the derivative of both sides.
+
+\begin{example}{implicit differentiation}
+    Going back to the equation of the circle, we can take the derivatives of both sides, taking note to use the Chain Rule when differentiating an expression with \( y \) as it is a function of \( x \). From there, we can isolate the value of \( y^\prime \).
+    
+    \begin{align}
+        x^2 + y^2 &= 1 \\
+        2x + 2y y^\prime &= 0 \\
+        2y y^\prime &= -2x \\
+        y^\prime = -\dfrac{\cancel{2}x}{\cancel{2}y} \\
+        y^\prime = -\dfrac{x}{y}
+    \end{align}
+    
+    Intuitively, this correlates to a line tangent to the unit circle. If we try and imagine in our head a point on the circle and find a slope with this formula, it does make some sense that the tangent slope would be equal to the negative cotangent value. As \( x \) approaches \( 0 \), so does the slope. This correlates with the top and bottom-most points on the circle having \textit{horizontal} tangent lines. As \( y \) approaches \( 0 \), however, the slope goes to both positive and negative infinity. This correlates to the left and right-most points on a circle having a \textit{vertical} tangent line.
+\end{example}
+
+This works based on the same principles of normal differentiation.
+
+Consider how we differentiate
+
+\[ y = x^2 \]
+
+On a lower-level, we can expand out and show all the uses of the Chain Rule. When we take the derivative of the left side, we get a constant multiplied by \( y^\prime \) due to the Chain Rule. The same is found on the right side.
+
+\begin{align}
+    \dfrac{d}{dx} \left( y \right) &= \dfrac{d}{dx} \left( x^2 \right) \\
+    1 \cdot y^\prime &= 2x \cdot \dfrac{dx}{dx}
+\end{align}
+
+However, we can simplify this down, knowing that \( \frac{dx}{dx} \) is simply just \( 1 \).
+
+\begin{example}{implicit differentiation}
+    Consider the function
+    
+    \[ x = y^2 \]
+    
+    While your first intuition may be to write this as an explicit equation, such as
+    
+    \[ y = \pm \sqrt{x} \]
+    
+    However, you cannot differentiate with the addition of the \( \pm \) without turning the function into, well, not a function. Luckily, we can use implicit differentiation instead.
+    
+    \begin{align}
+        \dfrac{d}{dx} \left( x \right) &= \dfrac{d}{dx} \left( y^2 \right) \\
+        1 &= 2y y^\prime \\
+        \implies y^\prime &= \dfrac{1}{2y}
+    \end{align}
+\end{example}
+
+\begin{example}{implicit differentiation with trig}
+    Find the first derivative of the function
+    
+    \[ y = \sin{\left( x y \right)} \]
+    
+    For this example, do not forget to use the Product Rule.
+    
+    \begin{align}
+        \dfrac{d}{dx} \left( y \right) &= \dfrac{d}{dx} \left( \sin{\left( x y \right)} \right) \\
+        y^\prime &= \cos{\left( xy \right)} \dfrac{d}{dx} \left( xy \right) \\
+        y^\prime &= \cos{\left( xy \right)} \left( xy^\prime + y \right) \\
+        y^\prime &= x y^\prime \cos{\left( xy \right)} + y \cos{\left( xy \right)} \\
+        y^\prime - xy^\prime \cos{\left( xy \right)} &= y \cos{\left( xy \right)} \\
+        y^\prime \left( 1 - x\cos{\left( xy \right)} \right) &= y \cos{\left( xy \right)} \\
+        y^\prime &= \dfrac{y \cos{\left( xy \right)}}{1 - x \cos{\left( xy \right)}}
+    \end{align}
+    
+    Remember that all \( y^\prime \) terms must be placed on one side to isolate it.
+\end{example}
+
+\subsection{Second Degree Implicit Derivatives}
+
+After obtaining a \( y^\prime \) value, you may be asked to differentiate again. This works the same as normal: apply your differentiation rules and simplify as much as you can. One thing to take note of, however, is that you will usually end up with a \( y^\prime \) term in your derivative. Because we know the value of this, we can substitute it back in with the derivative that we found beforehand. In addition, also look to see if you can substitute your original implicit equation back in.
+
+\begin{example}{second degree implicit differentiation (easy)}
+    Returning to our equation of a circle, whose first derivative we already calculated,
+    
+    \begin{align*}
+        x^2 + y^2 &= 1 \\
+        y^\prime &= -\dfrac{x}{y}
+    \end{align*}
+    
+    We can find the second derivative by differentiating both sides, taking care to apply the Quotient Rule and Chain Rule correctly.
+    
+    \begin{align}
+        \dfrac{d}{dx} \left( y^\prime \right) &= \dfrac{d}{dx} \left( - \dfrac{x}{y} \right) \\
+        y^{\prime \prime} &= -\dfrac{y \frac{d}{dx} \left( x \right) - x \frac{d}{dx} \left( y \right)}{y^2} \\
+        &= -\dfrac{y - xy^\prime}{y^2}
+    \end{align}
+    
+    We are not done yet. Notice how there is still a \( y^\prime \) term in the numerator. We know the value of this, so we can substitute it in.
+    
+    \begin{align}
+        &= -\dfrac{y - x \overbrace{\left( -\frac{x}{y} \right)}^{y^\prime}}{y^2} \\
+        &= -\dfrac{y + \frac{x^2}{y}}{y^2} \cdot \dfrac{y}{y} \\
+        &= -\dfrac{x^2 + y^2}{y^3}
+    \end{align}
+    
+    Let us take a look at the numerator now. This expression is exactly our original equation of the unit circle. This further simplifies, giving us a final answer of
+    
+    \begin{align}
+        y^{\prime\prime} &= -\dfrac{1}{y^3}
+    \end{align}
+\end{example}
+
+Consider the implicit equation
+
+\[ x^2 + xy + y^2 - 5x = 2 \]
+
+Finding the first derivative is relatively simple, but the hard parts comes when you are asked to evaluate the \textit{second} derivative. It won't be the calculus that is hard, but rather the pure algebra and simplification process.
+
+\begin{tip}
+    Before looking at the solution, try this problem yourself in order to gain a better understanding. As with many of the examples in this book, this is chosen to give you a good review of the ideas and concepts that you might potentially see (although you won't see a problem of this difficulty on the test). The best way to learn math is not just by looking, but also by doing.
+\end{tip}
+
+To start, let's find our first derivative.
+
+\begin{align}
+    \dfrac{d}{dx} \left( x^2 + xy + y^2 - 5x \right) &= \dfrac{d}{dx} \left( 2 \right) \\
+    2x + xy^\prime + y + 2yy^\prime - 5 &= 0 \\
+    xy^\prime + 2yy^\prime &= -2x - y + 5 \\
+    y^\prime \left( x + 2y \right) &= -2x - y + 5 \\
+    y^\prime &= \dfrac{-2x - y + 5}{x + 2y}
+\end{align}
+
+From here, we can differentiate once more, starting by using the Quotient Rule.
+
+\begin{align}
+    \dfrac{d}{dx} \left( y^\prime \right) &= \dfrac{d}{dx} \left( \dfrac{-2x - y + 5}{x + 2y} \right) \\
+    y^{\prime \prime} &= \dfrac{\left( x + 2y \right) \frac{d}{dx} \left( -2x - y + 5 \right) - \left( -2x - y + 5 \right) \frac{d}{dx} \left( x + 2y \right) }{\left( x + 2y \right)^2} \\
+    &= \dfrac{\left( x + 2y \right) \left( -2 - y^\prime \right) - \left( -2x - y + 5 \right) \left( 1 + 2y^\prime \right) }{\left( x + 2y \right)^2}
+\end{align}
+
+From here, you can choose to either expand the terms first or substitute the value of \( y^\prime \). I will choose the former.
+
+\begin{align}
+    &= \dfrac{\left( -2x - xy^\prime - 4y - 2yy^\prime \right) - \left( -2x - 4xy^\prime - y - 2yy^\prime + 5 + 10y^\prime \right)}{\left( x + 2y \right)^2} \\
+    &= \dfrac{-2x - xy^\prime - 4y - 2yy^\prime + 2x + 4xy^\prime + y + 2yy^\prime - 5 - 10y^\prime}{\left( x + 2y \right)^2}
+\end{align}
+
+Now we can cancel some terms out and combine like terms (indicated in colors).
+
+\begin{align}
+    &= \dfrac{\cancel{-2x} - \textcolor{blue}{xy^\prime} - \textcolor{darkgreen}{4y} - \cancel{2yy^\prime} + \cancel{2x} + \textcolor{blue}{4xy^\prime} + \textcolor{darkgreen}{y} + \cancel{2yy^\prime} - \textcolor{Plum}{5} - \textcolor{yellow!80!black}{10y^\prime}}{\left( x + 2y \right)^2} \\
+    &= \dfrac{\textcolor{blue}{3xy^\prime} - \textcolor{yellow!80!black}{10y^\prime} - \textcolor{darkgreen}{3y} - \textcolor{Plum}{5}}{\left( x + 2y \right)^2} \\
+    &= \dfrac{y^\prime \left( 3x - 10 \right) - 3y - 5}{\left( x + 2y \right)^2} \\
+\end{align}
+
+Now, we can substitute in the previously obtained value of \( y^\prime \)
+
+\begin{align}
+    &= \dfrac{\overbrace{\left( \frac{-2x - y + 5}{x + 2y} \right)}^{y^\prime} \left( 3x - 10 \right) - 3y - 5}{\left( x + 2y \right)^2}
+\end{align}
+
+In order to simplify matters and not have a fraction in the numerator, we can now multiply both the top and bottom by \( \left( x + 2y \right) \).
+
+\begin{align}
+    &= \dfrac{\left( \frac{-2x - y + 5}{x + 2y} \right) \left( 3x - 10 \right) - 3y - 5}{\left( x + 2y \right)^2} \cdot \dfrac{\left( x + 2y \right)}{\left( x + 2y \right)} \\
+    &= \dfrac{\left( -2x - y + 5 \right) \left( 3x - 10 \right) - 3y \left( x + 2y \right) - 5 \left( x + 2y \right)}{\left( x + 2y \right)^3}
+\end{align}
+
+We can now expand all of the terms once more and simplify.
+
+\begin{align}
+    &= \dfrac{\left( -6x^2 + 20x - 3xy + 10y + 15x - 50 \right) - \left( 3xy + 6y^2 \right) - \left( 5x + 10y \right)}{\left( x + 2y \right)^3} \\
+    &= \dfrac{-6x^2 + 20x - 3xy + 10y + 15x - 50 - 3xy - 6y^2 - 5x - 10y}{\left( x + 2y \right)^3}
+\end{align}
+
+From here, we can once again cancel and combine like terms.
+
+\begin{align}
+    &= \dfrac{-\textcolor{Plum}{6x^2} + \textcolor{yellow!80!black}{20x} - \textcolor{blue}{3xy} + \cancel{10y} + \textcolor{yellow!80!black}{15x} - \textcolor{darkred}{50} - \textcolor{blue}{3xy} - \textcolor{darkgreen}{6y^2} - \textcolor{yellow!80!black}{5x} - \cancel{10y}}{\left( x + 2y \right)^3} \\
+    &= \dfrac{-\textcolor{Plum}{6x^2} - \textcolor{blue}{6xy} - \textcolor{darkgreen}{6y^2} + \textcolor{yellow!80!black}{30x} - \textcolor{darkred}{50}}{\left( x + 2y \right)^3} \\
+    &= \dfrac{-6 \left( \textcolor{Plum}{x^2} + \textcolor{blue}{xy} + \textcolor{darkgreen}{y^2} - \textcolor{yellow!80!black}{5x} \right) - \textcolor{darkred}{50}}{\left( x + 2y \right)^3}
+\end{align}
+
+If you'll pay attention to the inside of the parentheses, the expression contains our original implicit equation:
+
+\[ x^2 + xy + y^2 - 5x = 2 \]
+
+This means that we can replace the expression in the parentheses with the value \( 2 \).
+
+\begin{align}
+    &= \dfrac{-6 \left( 2 \right) - 50}{\left(x + 2y \right)^3} \\
+    &= \dfrac{-12 - 50}{\left( x + 2y \right)^3} \\
+    &= \dfrac{-62}{\left( x + 2y \right)^3}
+\end{align}
+
+Finally, we have our answer. Note that this method was certainly not the only way of doing so. You could have started by substituting \( y^\prime \). You could have also left everything factored, only expanding at the very end. All of these methods, assuming that you end up with correct answer in the end, are correct.
+
+\section{Inverse Derivatives}
+
+\subsection{Inverse Functions}
+
+Here is a quick review of inverse functions.
+
+\begin{definition}{inverse function}
+    Loosely, an \defterm{inverse function} is a function who maps the \textit{output} of the original function to its \textit{input} and vice versa. We find inverse functions by simply swapping the \( y \) and \( x \) variables in their definition.
+\end{definition}
+
+\begin{example}{inverse function}
+    Take \( y = \tan{x} \). When we flip the \( y \) and \( x \) variables, we get
+    
+    \begin{align*}
+        x &= \tan{y} \\
+        \implies y &= \arctan{x}
+    \end{align*}
+    
+    With our normal function, we can plug in a value and express this as
+    
+    \[ \tan{\left( \dfrac{\pi}{4} \right)} = 1 \]
+    
+    When we take the inverse, these mappings flip.
+    
+    \[ \arctan{\left( 1 \right)} = \dfrac{\pi}{4} \]
+\end{example}
+
+\subsection{Inverse Trigonometric Derivatives}
+
+With each of the six important trigonometric functions comes six more almost as equally important \defterm{inverse} functions, which have their own unique derivatives.
+
+\begin{multicols}{2}
+\begin{itemize}
+    \item \( \dfrac{d}{dx} \left( \arcsin{x} \right) = \dfrac{1}{\sqrt{1 - x^2}}, \abs{x} < 1 \)
+    \item \( \dfrac{d}{dx} \left( \arccos{x} \right) = -\dfrac{1}{\sqrt{1 - x^2}}, \abs{x} < 1 \)
+    \item \( \dfrac{d}{dx} \left( \arctan{x} \right) = \dfrac{1}{1 + x^2} \)
+    \item \( \dfrac{d}{dx} \left( \arccsc{x} \right) = -\dfrac{1}{\abs{x} \sqrt{x^2 - 1}}, \abs{x} > 1 \)
+    \item \( \dfrac{d}{dx} \left( \arcsec{x} \right) = \dfrac{1}{\abs{x} \sqrt{x^2 - 1}}, \abs{x} > 1 \)
+    \item \( \dfrac{d}{dx} \left( \arccot{x} \right) = -\dfrac{1}{1 + x^2} \)
+\end{itemize}
+\end{multicols}
+
+An important thing to notice this that \textbf{all inverse co-functions will have a negative sign in their derivative}.
+
+\begin{example}{derivatives with inverse trig functions}
+    Find
+    
+    \[ \dfrac{d}{dx} \left( \arcsin{3x} \right) \]
+    
+    This is no different from taking the derivative of any other function. We will place the argument where \( x \) appears in the derivative and apply the Chain Rule. Note that the \( x^2 \) in the denominator of the derivative applies to the whole input, which is why we have \( 9x^2 \) in the square root and \textbf{not} \( 3x^2 \).
+    
+    \begin{align}
+        = &\dfrac{1}{\sqrt{1 - 9x^2}} \cdot \dfrac{d}{dx} \left( 3x \right) \\
+        = &\dfrac{3}{\sqrt{1 - 9x^2}}
+    \end{align}
+\end{example}
+
+\begin{notation}{inverse trig functions}
+    You will also see the notation
+    
+    \[ y = \sin^{-1}{x} \]
+    
+    using a \( -1 \) in the exponent to denote that it is the inverse of the function. This is more prevalent in America, for historical reasons. While either notation works, and you should try and stay consistent with the one you use, just know that there are some things to keep in mind.
+    
+    \begin{align*}
+        \cos^{-1}{x} &\ne \dfrac{1}{\cos{x}} \\
+        \sec^{-1}{x} &\ne \dfrac{1}{\cos^{-1}{x}} \\
+        \sec^{-1}{x} &= \cos{\left( \dfrac{1}{x} \right)}
+    \end{align*}
+\end{notation}
+
+How would we go about finding these derivatives by ourselves? The first thing we should do is write these in terms of functions that we know the derivatives of. We can write \( y = \arcsin{x} \) as
+
+\begin{align}
+    x &= \sin{y}
+\end{align}
+
+From then, we can use implicit differentiation, using the Chain Rule.
+
+\begin{align}
+    1 &= y^\prime \cos{y} \\
+    \implies y^\prime &= \dfrac{1}{\cos{y}}
+\end{align}
+
+However, you will notice that this is not the derivative that we looked at earlier. What we now need to do is write this in terms of \( x \). Knowing that \( x  = \sin{y} \),
+
+\begin{align}
+    &= \dfrac{1}{\sqrt{1 - \sin^2{y}}} \\
+    &= \dfrac{1}{\sqrt{1 - x^2}}
+\end{align}
+
+Now we have our derivative as desired. A similar process can be used to find the other five inverse trig derivatives. This is left as an exercise to the reader.
+
+\begin{example}{more inverse trig derivatives}
+    Find the derivative of the expression
+    
+    \[ \arcsec{\left( 3 \sqrt{x + 1} \right)} \]
+    
+    Using our memorized derivative and the Chain Rule,
+    
+    \begin{align}
+        = &\dfrac{1}{\abs{3 \sqrt{x + 1}} \sqrt{\left( 3 \sqrt{x + 1} \right)^2 - 1}} \cdot \dfrac{d}{dx} \left( 3 \sqrt{x + 1} \right) \\
+        = &\dfrac{1}{\abs{\cancel{3}\sqrt{x + 1}} \sqrt{9x + 8}} \cdot \dfrac{\cancel{3}}{2\sqrt{x + 1}} \\
+        = &\dfrac{1}{2 \left( x + 1 \right) \sqrt{9x + 8}}
+    \end{align}
+    
+    Note that we can take away the absolute value for the \( \sqrt{x + 1} \) term because the principle root will always be positive.
+\end{example}
+
+\subsection{Derivatives of Inverse Functions}
+
+Suppose we wanted to find the derivative of a function at a point as well as the derivative of the inverse at that same point. Is there some sort of relationship between these values?
+
+Consider the function \( y = x^2 \) at the point \( \left( 2, 4 \right) \). We can find our derivative at that point with relative ease.
+
+\begin{align}
+    y &= x^2 \\
+    \implies y^\prime &= 2x \\
+    \implies y^\prime \left( 2 \right) &= 4
+\end{align}
+
+Now we will find the derivative of the inverse. Remember that, in order to find the inverse of a function, we can swap the places of \( x \) and \( y \).
+
+\begin{align}
+    x &= y^2 \\
+    \implies 1 &= 2y y^\prime \\
+    \implies y^\prime &= \dfrac{1}{2y} \\
+    \implies y^\prime \left( 2 \right) &= \dfrac{1}{4}
+\end{align}
+
+For more clarity, I will attempt another example.
+
+Now consider the function \( y = x^3 - x \) at the point \( \left( 2, 6 \right) \). We can find the derivative to be,
+
+\begin{align}
+    y &= x^3 - x \\
+    \implies y^\prime &= 3x^2 - 1 \\
+    \implies y^\prime \left( 2 \right) &= 11
+\end{align}
+
+Then, we can find the inverse function derivative by flipping the variables and differentiating.
+
+\begin{align}
+    x &= y^3 - y \\
+    \implies 1 &= 3y^2 y^\prime - y^\prime \\
+    1 &= y^\prime \left( 3y^2 - 1 \right) \\
+    \implies y^\prime &= \dfrac{1}{3y^2 - 1} \\
+    \implies y^\prime \left( 2 \right) &= \dfrac{1}{11}
+\end{align}
+
+Interestingly, in both cases, the inverse derivative's equation, and thus, value at a point are the reciprocals of the original function's. Why is this?
+
+If we take a look at the derivatives using Leibniz notation, this becomes clearer. Looking at our function, we see that it is a function of \( x \). This means that the derivative is written as
+
+\[ \dfrac{dy}{dx} \]
+
+However, when we switch the variables, we end up with \( x \) being a function of \( y \). This makes the derivative
+
+\[ \dfrac{dx}{dy} \]
+
+If we take the reciprocal of \( dy / dx \), we get \( dx / dy \), which somewhat explains why the relation between these two is as such. This means that, if you so desired, you could find the derivatives of inverses without using implicit differentiation; however, you would still have to rewrite the expression in terms of the independent variable.
+
+One might also see this written as
+
+\[ g^\prime \left( f \left( x \right) \right) = \dfrac{1}{f^\prime \left( x \right)} \]
+
+where \( f \) and \( g \) are inverses functions and functions of \( x \). Several AP test questions have appeared using the above fact, such as the two given below.
+
+\begin{example}{inverse derivative reciprocal rule}
+    Given \( g \left( x \right) \) and \( h \left( x \right) \) to be inverse functions and
+    
+    \[ h \left( x \right) = x^3 - 2x + 3 \]
+    
+    Find \( g^\prime \left( 2 \right) \).
+    
+    Applying the relation we just learned earlier, we see that, for some \( x \) where \( h \left( x \right) = 2 \),
+
+    \[ g^\prime \left( 2 \right) = \dfrac{1}{h^\prime \left( x \right)} \]
+    
+    How do we find when \( h \left( x \right) = 2 \)? There is no other good way than trial and error. Luckily, because this is on the test, we know that it will be relatively easy to find by plugging in some small number. After testing some values, we see that \( h \left( 1 \right) = 2 \implies x = 1 \). This lets us plug in \( x = 1 \) to the derivative of \( h \), which we do know how to find.
+    
+    \begin{align}
+        h^\prime \left( x \right) &= 3x^2 - 2 \\
+        \implies h^\prime \left( 1 \right) &= 1 \\
+        \implies g^\prime \left( 2 \right) &= \dfrac{1}{1} = 1
+    \end{align}
+\end{example}
+
+\begin{example}{inverse derivative reciprocal rule}
+    Given  \( g \left( x \right) \) and \( h \left( x \right) \) to be inverse functions and the following table of values, find \( h^\prime \left( 3 \right) \).
+    
+    \begin{center}
+    \begin{tabular}{c|c|c|c}
+        \( x \) & \( g \left( x \right) \) & \( h \left( x \right) \) & \( g^\prime \left( x \right) \) \\
+        \hline
+        \( 3 \) & \( 5 \) & \( 4 \) & \( -1/4 \) \\
+        \( 4 \) & \( 3 \) & \( 1 \) & \( 1/2 \)
+    \end{tabular}
+    \end{center}
+    
+    Again using the previous relation between inverse function derivatives, this problem is quite trivial.
+    
+    \[ h^\prime \left( 3 \right) = \dfrac{1}{g^\prime \left( x \right)} \]
+    
+    where \( x \) is the value at which \( g \left( x \right) = 3 \). Consulting the table, we see that \( g \left( x \right) = 3 \) when \( x = 4 \). Now looking at the last column, we see that \( g^\prime \left( 4 \right) = 1/2 \). Thus,
+    
+    \begin{align}
+        h^\prime \left( 3 \right) = \dfrac{1}{1/2} = 2
+    \end{align}
+\end{example}
+
+\section{Natural Logarithms and Exponential Functions}
+
+\subsection{Reviewing Logarithms and Exponentials}
+
+Logarithmic and exponential functions have special rules and relationships that make them especially useful as well as interesting.
+
+For logarithms,
+
+\begin{multicols}{2}
+    \begin{itemize}
+        \item \( \ln{ab} = \ln{a} + \ln{b} \)
+        \item \( \ln{\frac{a}{b}} = \ln{a} - \ln{b} \)
+        \item \( \ln{a^b} = b \ln{a} \)
+        \item \( \ln{\frac{1}{a}} = \ln{a^{-1}} = -\ln{a} \)
+    \end{itemize}
+\end{multicols}
+
+In addition, the logarithm of any base \( b \) can be written in terms of the natural logarithm with
+
+\[ \log_a{x} = \dfrac{\ln{x}}{\ln{a}} \]
+
+This will be helpful when taking the derivative of logarithms with different bases.
+
+For exponential functions,
+
+\begin{multicols}{2}
+    \begin{itemize}
+        \item \( e^{ab} = \left( e^a \right)^b \)
+        \item \( e^{a - b} = \dfrac{e^a}{e^b} \)
+        \item \( e^{a + b} = e^a \cdot e^b \)
+        \item \( e^{-a} = \dfrac{1}{e^a} \)
+    \end{itemize}
+\end{multicols}
+
+Remember also that \( \ln{x} \) (log base \( e \)) and \( e^x \) are inverse functions. This means that
+
+\[ e^{\ln{x}} = \ln{e^x} = x \]
+
+\( e \), also called Euler's number, is a very special constant, roughly equal to \( 2.7183 \), associated with exponential growth.
+
+This is what the graph of \( y = \ln{x} \) looks like.
+
+\begin{center}
+    \begin{tikzpicture}[scale=.9]
+        \begin{axis}[xmin=-1, xmax=5, xstep=1, ymin=-3, ymax=3, ystep=1, axis lines=middle, xlabel=\(x\), ylabel=\(y\), restrict y to domain=-100:10, every axis plot/.append style={thick}]
+            \addplot[color=blue, samples=150, smooth, domain=0:5]{ln(x)};
+            \addplot[mark=*, color=blue, fill=blue] coordinates {(1, 0)} node[anchor=south]{\( \left( 1, 0 \right) \)};
+            \addplot[mark=*, color=blue, fill=blue] coordinates {(2.71828, 1)} node[anchor=south]{\( \left( e, 1 \right) \)};
+        \end{axis}
+    \end{tikzpicture}
+\end{center}
+
+Remember that \( \ln{x} \) is not defined for the real numbers in the interval \( \left( -\infty, 0 \right] \). This occurs as a consequence of being the inverse of the exponential function.
+
+From this graph we can see the following limits.
+
+\begin{align*}
+    \lim_{x \to 0^+} \ln{\left(x \right)} &\to -\infty \\
+    \lim_{x \to \infty} \ln{\left( x \right)} &\to \infty
+\end{align*}
+
+\newpage
+
+This is what the graph of \( y = e^x \) looks like.
+
+\begin{center}
+    \begin{tikzpicture}[scale=.9]
+        \begin{axis}[xmin=-5, xmax=5, xstep=1, ymin=-1, ymax=10, ystep=1, axis lines=middle, xlabel=\(x\), ylabel=\(y\), every axis plot/.append style={thick}]
+            \addplot[color=blue, samples=100, smooth]{e^x};
+            \addplot[mark=*, color=blue, fill=blue] coordinates {(0, 1)} node[anchor=west]{\( \left( 0, 1 \right) \)};
+            \addplot[mark=*, color=blue, fill=blue] coordinates {(1, 2.71828)} node[anchor=west]{\( \left( 1, e \right) \)};
+        \end{axis}
+    \end{tikzpicture}
+\end{center}
+
+From this graph, we can see the following end behavior limits:
+
+\begin{align*}
+    \lim_{x \to -\infty} e^x &= 0 \\
+    \lim_{x \to \infty} e^x &\to \infty
+\end{align*}
+
+\subsection{Logarithmic Derivatives}
+
+The derivative of \( \ln{x} \) is given as follows (for those curious as to why, a proof will be given in Chapter 9). As for all other functions, the Chain Rule still applies.
+
+\[ \dfrac{d}{dx} \left( \ln{x} \right) = \dfrac{1}{x} \]
+
+In fact, the same is true for \( y = \ln{ax} \).
+
+\begin{align}
+    &\dfrac{d}{dx} \left( \ln{ax} \right) \\
+    = &\dfrac{1}{ax} \cdot \dfrac{d}{dx} \left( ax \right) \\
+    = &\dfrac{\cancel{a}}{\cancel{a}x} \\
+    = &\dfrac{1}{x}
+\end{align}
+
+Another way to verify these derivatives is to use logarithm rules to simplify.
+
+\begin{align}
+    &\dfrac{d}{dx} \left( \ln{ax} \right) \\
+    = &\dfrac{d}{dx} \left( \ln{a} + \ln{x} \right) \\
+    = &\dfrac{1}{x}
+\end{align}
+
+\begin{tip}
+    Remember, the natural logarithm of any constant value is also a constant. When taking the derivative, it will always evaluate to \( 0 \).
+\end{tip}
+
+\begin{example}{simple logarithm derivatives}
+    Given the function
+    
+    \[ y = \ln{x^2} \]
+    
+    Find \( y^\prime \).
+    
+    \vspace{0.3cm}
+    
+    This problem can be tackled in two different ways. Firstly, let's use the Chain Rule with our definition of the derivative.
+    
+    \begin{align}
+        y^\prime &= \dfrac{1}{x^2} \cdot \dfrac{d}{dx} \left( x^2 \right) \\
+        &= \dfrac{1}{x^{\cancel{2}}} \cdot 2\cancel{x} \\
+        &= \dfrac{2}{x}
+    \end{align}
+    
+    Alternatively, we can simplify with logarithm rules first.
+    
+    \begin{align}
+        y &= 2 \ln{x} \\
+        \implies y^\prime &= \dfrac{2}{x}
+    \end{align}
+    
+    Use whichever method you prefer, so long as it is mathematically correct and gives you the correct answer.
+\end{example}
+
+\begin{example}{nested logarithmic derivatives}
+    If your teacher is feeling especially evil one day, they may ask you to find the derivative of
+    
+    \[ y = \ln{\left( \ln{\left( \ln{\left( x\right)} \right)} \right)} \]
+    
+    But, with your knowledge of derivatives, you'll show them who's boss (spoiler alert: it's still them).
+    
+    \vspace{0.2cm}
+    
+    \textit{Ahem}, anyways, this is an exercise in applying the Chain Rule.
+    
+    \begin{align}
+        y^\prime &= \dfrac{1}{\ln{\left( \ln{\left( x \right)}\right)}} \cdot \dfrac{d}{dx} \left( \ln{\left( \ln{\left( x \right)}\right)} \right) \\
+        &= \dfrac{1}{\ln{\left( \ln{\left( x \right)}\right)}} \cdot \dfrac{1}{\ln{\left( x \right)}} \cdot \dfrac{d}{dx} \left( \ln{\left( x \right)} \right) \\
+        &= \dfrac{1}{\ln{\left( \ln{\left( x \right)}\right)}} \cdot \dfrac{1}{\ln{\left( x \right)}} \cdot \dfrac{1}{x} \\
+        &= \dfrac{1}{x \ln{\left( x \right)} \ln{\left( \ln{\left( x \right)} \right)}}
+    \end{align}
+    
+    That's a lot of logs.
+\end{example}
+
+\subsection{Logarithms of Different Bases}
+
+Remembering back to Pre-Calculus, logarithms can have different bases. For example \( \log_2{2^4} = 4 \) represents a logarithm in base \( 2 \). We don't know how to take the derivatives of these, but luckily we can use the change of bases formula to rewrite this in terms of natural logarithms.
+
+\begin{align}
+    &\dfrac{d}{dx} \left( \log_a{x} \right) \\
+    = &\dfrac{d}{dx} \left( \dfrac{\ln{x}}{\ln{a}} \right) \\
+    = &\dfrac{1}{x} \cdot \dfrac{1}{\ln{a}} \\
+    = &\dfrac{1}{x \ln{a}}
+\end{align}
+
+Different base logarithm derivative are simply just a constant term away from the natural logarithm derivative. This general form should be memorized.
+
+\begin{example}{log 10 derivative}
+    Find the derivative of the function
+    
+    \[ y = \log_{10}{\left( x^2 + 1 \right)} \]
+    
+    \vspace{0.3cm}
+    
+    The derivative of this is the same as it would be for the natural logarithm with an extra constant tacked on.
+    
+    \begin{align}
+        y^\prime &= \dfrac{1}{x^2 + 1} \cdot \dfrac{1}{\ln{10}} \cdot \dfrac{d}{dx} \left( x^2 + 1 \right) \\
+        &= \dfrac{1}{\left( x^2 + 1 \right) \ln{10}} \cdot 2x \\
+        &= \dfrac{2x}{\left( x^2 + 1 \right) \ln{10}}
+    \end{align}
+\end{example}
+
+\subsection{Logarithmic Differentiation}
+
+\begin{definition}{log diff}
+    \defterm{Logarithmic differentiation}, often shortened to \defterm{log diff}, is the strategy of taking the logarithm of both sides of an equation and taking the derivative, oftentimes converting a explicit differentiation problem to an implicit one.
+\end{definition}
+
+To illustrate what this means, let's look an at example.
+
+Consider the familiar function \( y = x^2 \). While we know how to take the derivative normally, we can also show this with log diff. Firstly, we apply the natural log on both sides.
+    
+\begin{align}
+    \ln{y} &= 2 \ln{x}
+\end{align}
+
+Now this is an implicit differentiation problem. When taking the derivative, don't forget to apply the Chain Rule.
+
+\begin{align}
+    \dfrac{y^\prime}{y} &= \dfrac{2}{x} \\
+    y^\prime &= y \cdot \dfrac{2}{x}
+\end{align}
+
+You will notice that this is not the derivative we are familiar with, but we can substitute the value of \( y \) back into the equation and simplify further.
+
+\begin{align}
+    &= x^{\cancel{2}} \cdot \dfrac{2}{\cancel{x}} \\
+    &= 2x
+\end{align}
+
+This, however, is a somewhat contrived example. If we already know how to take the derivative normally, and this simply does the same thing with more steps, \defterm{why and when would we use log diff?}
+
+The answer to this is relatively simple, log diff is useful when taking derivatives of functions that can be simplified with logarithm rules and would otherwise be hard or impossible to take the derivative of without.
+
+Consider the extremely fast-growing function \( y = x^x \). We {\color{red} \underline{\textbf{cannot}}} simply apply the Power Rule and say that the derivative is \( y^\prime = x \cdot x^{x - 1} = x^x \) because this would be incorrect. The Power Rule, which can be proven using log diff, only applies for constant powers. To find this derivative correctly, we must use log diff. It is because of logarithmic rules that we can simplify and take the derivative of this.
+
+\begin{align}
+    \ln{y} &= x \ln{x} \\
+    \implies \dfrac{y^\prime}{y} &= x \cdot \frac{d}{dx} \left( \ln{x} \right) + \ln{x} \cdot \frac{d}{dx} \left( x \right) \\
+    \dfrac{y^\prime}{y} &= \cancel{x} \cdot \frac{1}{\cancel{x}} + \ln{x} \cdot 1 \\
+    \dfrac{y^\prime}{y} &= 1 + \ln{x} \\
+    y^\prime &= y \left( \ln{x} + 1 \right) \\
+    &= x^x \left( \ln{x} + 1 \right)
+\end{align}
+
+This is the one, true derivative of \( x^x \).
+
+Another place where logarithm rules come in handy is with multiplied and divided polynomials. Note that you can only use this if you are not required to simplify the answer. Consider the function
+
+\[ y = \dfrac{\left( x - 1 \right)^2 \left( 2x + 3 \right)^3}{\left( 5x - 2 \right)^2} \]
+
+When we take the natural logarithm of both sides, we can bring the powers down from the exponent and turn the multiplications and divisions into additions and subtractions, which are much more friendly for differentiation.
+
+\begin{align}
+    y^\prime &= 2 \ln{\left( x - 1 \right)} + 3 \ln{\left( 2x + 3 \right)} - 2 \ln{\left( 5x - 2 \right)}
+\end{align}
+
+Now we can differentiate, taking care not to forget the Chain Rule.
+
+\begin{align}
+    \dfrac{y^\prime}{y} &= \dfrac{2}{x - 1} + \dfrac{6}{2x + 3} - \dfrac{10}{5x - 2} \\
+    y^\prime &= y \left( \dfrac{2}{x - 1} + \dfrac{6}{2x + 3} - \dfrac{10}{5x - 2} \right) \\
+    y^\prime &= \dfrac{\left( x - 1 \right)^2 \left( 2x + 3 \right)^3}{\left( 5x - 2 \right)^2} \left( \dfrac{2}{x - 1} + \dfrac{6}{2x + 3} - \dfrac{10}{5x - 2} \right)
+\end{align}
+
+Once again, though, this is only an acceptable answer if the problem states that you do not have to simplify fully.
+
+\subsection{Exponential Derivatives}
+
+The inverse of the the natural logarithm is the function \( y = e^x \), also denoted as \( \exp{\left( x \right)} \) in some contexts. As these functions are inverses, they go hand-in-hand.
+
+Using our new tool of log diff, we can find the derivative of \( e^x \) ourselves. Logarithmic differentiation lends itself especially well here because of the \( x \) term in the exponent that would otherwise be impossible to deal with.
+
+Setting \( y = e^x \), we can nicely take the natural logarithm of both sides.
+
+\begin{align}
+    \ln{y} &= x
+\end{align}
+
+Taking the derivative,
+
+\begin{align}
+    \dfrac{y^\prime}{y} &= 1 \\
+    y^\prime &= y \\
+    y^\prime &= e^x
+\end{align}
+
+Nope, we did not do that incorrectly. The derivative of \( e^x \) is simply just itself. Its velocity, acceleration, acceleration's acceleration, and so on are all \( e^x \), meaning that it \textbf{grows proportionally to itself}. This is the reason why exponential functions grow so quickly and why things like epidemic outbreaks are modeled by exponential functions. It is not possible to overstate how cool this is, but I only have so much time and energy to write, so I encourage you to look more into this topic outside of class.
+
+A more general form for the derivative of \( y = a^x \) can be found to be
+
+\[ y^\prime = a^x \ln{a} \]
+
+This can be proven with the same methods as previously and should be memorized as well.
+
+\begin{example}{exponential derivatives}
+    Find the first derivative of the function
+    
+    \[ y = 2^{\sin{x}} \]
+    
+    \vspace{0.3cm}
+    
+    This is considerably easier than it looks. The great thing about taking the derivative of exponential functions is that you can simply duplicate the function and apply the Chain Rule, remembering to multiply by the constant as well.
+    
+    \begin{align}
+        y^\prime &= 2^{\sin{x}} \cdot \dfrac{d}{dx} \left( \sin{x} \right) \cdot \ln{2} \\
+        &= \ln{2} \cdot \cos{x} \cdot 2^{\sin{x}}
+    \end{align}
+    
+    This answer cannot be simplified further.
+\end{example}

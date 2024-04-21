@@ -1,0 +1,1456 @@
+\chapter{Applications of Derivatives}
+
+\section{Extreme Values of Functions}
+
+\subsection{Critical and Stationary Points}
+
+When finding extrema of functions, which will come up quite soon, it is important to keep in two key definitions.
+
+\begin{definition}{critical and stationary points}
+    A \defterm{critical point} is a point in which, given a function \( f \left( x \right) \) and a point \( x \), either \( f^\prime \left( x \right) = 0 \) or \( f^\prime \left( x \right) \) does not exist.
+    
+    \vspace{0.3cm}
+    
+    A \defterm{stationary point} is similar, but not entirely the same, when compared to a critical point. Given a function \( f \left( x \right) \) and a point \( x \), that point \( x \) is considered a stationary point when \( f^\prime \left( x \right) = 0 \) on the interior of the domain.
+\end{definition}
+
+While the terminology "stationary" is relatively novel, it will be used in your Pearson homework, so it is essential to know.
+
+We look at critical points to see possible changes in the sign of the derivative, or growth of the function, just as we would for critical values with inequalities. Critical points \textit{can} be extrema, but they do not have to be. Similarly, while endpoints also count as local minima and maxima, they are not usually considered critical points.
+
+One tool that utilizes critical points is called the \defterm{sign chart}. This chart allows us to view a function's behavior without needing to graph it.
+
+Suppose we have a function whose critical points are located at \( x = 1 \) and \( x = 3 \), given by
+    
+\begin{align*}
+    f \left( x \right) &= x^3 - 6x^2 + 9x + 2 \\
+    f^\prime \left( x \right) &= 3 \left( x - 1 \right) \left( x - 3 \right)
+\end{align*}
+    
+By testing values between the critical points, we can look at the \textit{sign} of the derivative in those intervals. This allows us to view where a function is increasing and decreasing and where potential extrema may be.
+    
+Simply plugging in values around the critical points, we see
+    
+\begin{align*}
+    f^\prime \left( 0 \right) &= 9 \\
+    f^\prime \left( 2 \right) &= -3 \\
+    f^\prime \left( 5 \right) &= 24 \\
+\end{align*}
+    
+Looking at the signs of the numbers, we can construct a sign chart now.
+    
+\begin{figure}[H]
+    \centering
+    \includesvg[width=300pt]{Figures/SignChart.svg}
+\end{figure}
+    
+Because the derivative is positive on the intervals \( \left( -\infty, 1 \right) \) and \( \left( 3, \infty \right) \), we can see that the function will keep increasing on those intervals. Likewise, \( f^\prime \left( x \right) \) is negative in the interval \( \left(1, 3 \right) \). This means that the function will decrease on that interval. Although we don't know the exact graph or shape of the function, we can see that from our sign chart that the function will have a local \textit{maximum} at \( x = 1 \) and a local \textit{minimum} at \( x = 3 \).
+
+\begin{tip}
+    Note: Although the sign chart can be a useful tool, it is \textbf{not} a substitute for an actual explanation on the AP Test. If a problem asks you to describe the interval on which a function is increasing (or something similar), you \textbf{must} write out a sentence explanation.
+\end{tip}
+
+\subsection{Locating Extrema}
+
+If you'll remember back to Chapter 2, we learned how to identify absolute and local maxima and minima, or \defterm{extrema}, but we did not cover locating them given a function. Now that we have the power of derivatives, however, we are now able to do this with ease.
+
+Given a function \( f^\prime \left( x \right) \) and an interval over which it is defined, we can find extrema by considering all critical points \textit{and} endpoints. Critical points can be found by setting the derivative to \( 0 \) or when the derivative is undefined. The endpoints can also be found quite easily by plugging in both the values in the interval given.
+
+We can do this as a consequence of the following theorem.
+
+\begin{theorem}{First Derivative Theorem for Local Extrema}
+    If a function has a local minimum or maximum at an interior point \( c \) in its domain, and if \( f^\prime \) exists at \( c \), then \( f^\prime \left( c \right) = 0 \).
+\end{theorem}
+
+Intuitively, this makes sense. Consider the following sketch
+
+\begin{figure}[H]
+    \centering
+    \includesvg[width=400pt]{Figures/FDTheoremGraph.svg}
+\end{figure}
+
+When an extrema is located at a cusp or a corner of some kind, the derivative does not exist and we cannot find it by setting the derivative to \( 0 \). All other extrema, however, will have horizontal tangent lines. This means that we can find these points by setting the derivative to \( 0 \).
+
+\vspace{0.3cm}
+
+After locating all the points needed, we can construct a table of values and compare them to see which points are maximum and minimum values. This allows us to not only pick out local extrema, but absolute extrema as well.
+
+\begin{example}{locating extrema of a function}
+    Consider the function
+    
+    \[ y = \dfrac{1}{x} + \ln{x} \]
+    
+    over the interval \( \left[\frac{1}{2}, 4 \right] \). How can we find the extrema?
+    
+    \vspace{0.3cm}
+    
+    Just like stated earlier, we can set the derivative to \( 0 \) and solve.
+    
+    \begin{align}
+        y^\prime &= -\dfrac{1}{x^2} + \dfrac{1}{x} \\
+        0 &= -\dfrac{1}{x^2} + \dfrac{1}{x}
+    \end{align}
+    
+    From here, we can see that our only critical point is located at \( x = 1 \). Including the endpoint values that we have to check, we can construct a table of values.
+    
+    \begin{center}
+    \begin{tabular}{c|l}
+        \( x \) & \( y \) \\
+        \hline
+        \( 1 \) & \( 1 - \ln{1} = 1 \) \\
+        \( 1 / 2 \) & \( 2 - \ln{2} \approx 1.307 \) \\
+        \( 4 \) & \( 1/4 + \ln{4} \approx 1.636 \)
+    \end{tabular}
+    \end{center}
+    
+    Thus, we can see that there is a local minimum at \( x = 1 \) and two local maxima at \( x = 1/2 \) and \( x = 4 \). In addition, because it has the smallest \( y \) value, the absolute minimum is also located at \( x = 1 \). Similarly, the absolute maximum is located at \( x = 4 \) because it has the largest \( y \) value.
+\end{example}
+
+\section{The Mean Value Theorem and So Much More}
+
+\subsection{Mean Value and Rolles' Theorem}
+
+One highly important and iconic theorem in Calculus is the Mean Value Theorem.
+
+\begin{theorem}{Mean Value Theorem}
+    If \( y = f \left( x \right) \) is continuous at every point in \( \left[a, b \right] \) and differentiable at every point on the interior \( \left(a, b \right) \), there exists at least one \( c \) between \( a \) and \( b \) in which
+    
+    \[ f^\prime \left( c \right) = \dfrac{f \left( b \right) - f \left( a \right)}{b - a} \]
+\end{theorem}
+
+In reality, all this is stating is that, there is at least one point in which the instantaneous rate of change equals the average rate of change. Intuitively, this makes sense. If all rates of change were below the average rate of change, then the average rate of change would not be the average.
+
+Note also that when using this theorem, you must fulfill the conditions of continuity and differentiability that it states. Some problems will also only state that a function is differentiable over an interval, which would imply that it is continuous on that interval as well.
+
+\begin{example}{using the MVT}
+    The function \( f \left( x \right) = x^2 + 3 \) is continuous on \( \left[0, 4 \right] \) and differentiable on \( \left(0, 4 \right) \). Since \( f \left( 0 \right) = 3 \) and \( f \left( 4 \right) = 19 \), the MVT guarantees a point \( c \) in the interval \( \left[0, 4 \right] \) for which 
+    
+    \[ f^\prime \left( c \right) = \dfrac{f \left( b \right) - f \left( a \right)}{b - a} \]
+    
+    For what value \( c \) is this true?
+    
+    \vspace{0.3cm}
+    
+    Plugging in our values, we can first find the average rate of change and then solve for the value at which the derivative is equal to it.
+    
+    \begin{align}
+        f^\prime \left( c \right) &= \dfrac{19 - 3}{4 - 0} \\
+        &= 4 \\
+        f^\prime \left( x \right) &= 2x \\
+        \implies 2c &= 4 \\
+        \implies c &= 2
+    \end{align}
+\end{example}
+
+Another famous theorem that goes along with the MVT is Rolles' Theorem.
+
+\begin{theorem}{Rolles' Theorem}
+    Suppose \( y = f \left( x \right) \) is continuous on \( \left[a, b \right] \) and differentiable at every point on \( \left(a, b \right) \). If \( f \left( a \right) = f \left( b \right) = 0 \), then there exists at least one \( c \) \textit{s.t.} \( f^\prime \left( c \right) = 0 \)
+\end{theorem}
+
+This theorem also makes quite a bit of sense. If we have two points with the same \( y \) value, there is always at least one extrema between them or simply just a straight line, both of which have derivatives equal to \( 0 \).
+
+\subsection{Increasing and Decreasing Intervals}
+
+As we've seen before, another prevalent application of derivatives is to find when a function is increasing and decreasing.
+
+\begin{theorem}{first derivative test for increasing and decreasing}
+    The original equation \( f \left( x \right) \) is increasing on \( \left[a, b \right] \) when \( f^\prime \left( x \right) > 0 \) on \( \left(a, b \right) \) and decreasing on \( \left[a, b \right] \) when \( f^\prime \left( x \right) < 0 \) on \( \left(a, b \right) \).
+\end{theorem}
+
+With very little effort, we can also see that the converse of this, that a function which is increasing on an interval has a positive derivative over all points in that interval, is true.
+
+\begin{example}{intervals of increasing and decreasing}
+    Consider the function
+    
+    \[ y = x^2 \]
+    
+    When is it increasing and when it is decreasing?
+    
+    \vspace{0.3cm}
+    
+    Like usual, we can set the derivative equal to \( 0 \).
+    
+    \begin{align}
+        y^\prime &= 2x \stackrel{\text{set}}{=} 0 \\
+        \implies x &= 0
+    \end{align}
+    
+    This gives us our critical point. We can now either use a sign chart or plug values in to see that the function is decreasing when \( x < 0 \) and increasing when \( x > 0 \). Your work, however, will not be accepted as an answer on the AP test. In order to receive full points for an answer, you must write something like.
+    
+    \begin{center}
+    \( y \) is decreasing on \( \left( -\infty, 0 \right] \) because \( y^\prime < 0 \) on \( \left( -\infty, 0 \right) \).
+    
+    \( y \) is increasing on \( \left[ 0, \infty \right) \) because \( y^\prime > 0 \) on \( \left( 0, \infty \right) \).
+    \end{center}
+    
+    Note the difference between the open and closed brackets for the intervals. While the AP test will not take points off for this, you should know that the increasing/decreasing intervals should be closed and the derivative intervals should be open.
+\end{example}
+
+Now with the power of derivatives, we are able to point out maximums and minimums and intervals of increasing and decreasing. This may be combined into one question sometimes. Remember to include your written responses.
+
+\begin{example}{function increasing and decreasing with extrema}
+    Consider the function
+    
+    \[ y = \dfrac{1}{3}x^3 + \dfrac{1}{2}x^2 - 6x + 4 \]
+    
+    What are the extrema of this function, and where is it increasing and decreasing?
+    
+    \vspace{0.3cm}
+    
+    Once again, we can set the derivative equal to \( 0 \).
+    
+    \begin{align}
+        y^\prime &= x^2 + x - 6 \\
+        &= \left( x + 3 \right) \left( x - 2 \right)
+    \end{align}
+    
+    Now if we set this to \( 0 \), we find two critical points: \( x = -3 \) and \( x = 2 \). Through creating a sign chart or simply plugging in values around these critical points, we can see that:
+    
+    \begin{align}
+        y^\prime \left( x : \left( -\infty, -3 \right] \right) &> 0 \implies y^\prime \text{ increasing} \\
+        y^\prime \left( x : \left[ -3, 2 \right] \right) &< 0 \implies y^\prime \text{ decreasing} \\
+        y^\prime \left( x : \left[ 2, \infty \right) \right) &> 0 \implies y^\prime \text{ increasing}
+    \end{align}
+    
+    Also note that
+    
+    \begin{align}
+        f \left( -3 \right) = &\frac{35}{2} \\
+        f \left( 2 \right) = -&\frac{10}{3}
+    \end{align}
+    
+    With the change from increasing to decreasing at \( x = -3 \), we can see that it is a maximum. Similar logic can be used to reason that \( x = 2 \) is a minimum.
+    
+    Now that we have all the information needed, we can format our answer.
+    
+    \begin{center}
+        \( y^\prime \) is increasing on \( \left( -\infty, -3 \right] \) because \( y^\prime > 0 \) on \( \left( -\infty, -3 \right) \).
+        
+        \( y^\prime \) is decreasing on \( \left[ -3, 2 \right] \) because \( y^\prime < 0 \) on \( \left( -3, 2 \right) \).
+        
+        \( y^\prime \) is increasing on \( \left[ 2, \infty \right) \) because \( y^\prime > 0 \) on \( \left( 2, \infty \right) \).
+        
+        \vspace{0.4cm}
+        
+        The maximum value is found at \( \left( -3, \frac{35}{2} \right) \) where \( y^\prime = 0 \) and \( y^\prime \) changes from positive to negative.
+        
+        The minimum value is found at \( \left( 2, -\frac{10}{3} \right) \) where \( y^\prime = 0 \) and \( y^\prime \) changes from negative to positive.
+    \end{center}
+\end{example}
+
+\begin{tip}
+    In some of the answers, you may see some redundancy in the wording or layout of the answers, and you may try to condense it by using the word "it" or other methods. \textbf{This is not recommended.} Any introduction of vagueness or ambiguity into your answer may cause you to lose points. It is safest to always be as explicit as possible, even at the cost of sounding repetitive. This is not English class; this is Mathematics.
+\end{tip}
+
+It is important to keep in mind that some functions, such as \( y = x^3 \), have derivatives that do not change in sign. In other words, these functions will keep on increasing or decreasing and never change. In this case, even if there is a \( 0 \) of the derivative, it is \textbf{not} an extremum.
+
+\subsection{Antiderivatives and Differential Equations: An Introduction}
+
+\subsubsection{Antiderivatives}
+
+\begin{definition}{antiderivative}
+    A function \( F \left( x \right) \) is an \defterm{antiderivative} of a function \( f \left( x \right) \) if \( F^\prime \left( x \right) = f \left( x \right) \) at every point of the function's domain.
+\end{definition}
+
+\begin{notation}{antiderivative}
+    When we have a function represented with a lowercase letter, usually a function with the uppercase form of that letter is used to denote the original function's antiderivative.
+\end{notation}
+
+The concept of an antiderivative is decently simple. We know that we can take the derivative of a function and get another function, but can we, given the derivative of some function, find the original function? Essentially, antidifferentiation is the \textit{inverse} of differentiation. In some cases, this will be easy, and in others, it will take quite a few steps.
+
+Someone with especially sharp mathematical sense might see somewhat of a fallacy in this. To illustrate this "fallacy," let us take a look at a few derivatives.
+
+\begin{align}
+    f \left( x \right) = x^2 &\implies f^\prime \left( x \right) = 2x \\
+    f \left( x \right) = x^2 + 2 &\implies f^\prime \left( x \right) = 2x \\
+    f \left( x \right) = x^2 + 5 &\implies f^\prime \left( x \right) = 2x \\
+    f \left( x \right) = x^2 + 1000 &\implies f^\prime \left( x \right) = 2x \\
+    f \left( x \right) = x^2 + 3a &\implies f^\prime \left( x \right) = 2x
+\end{align}
+
+All of these functions have the exact \textit{same} derivative due to the derivative of a constant being \( 0 \). If we're given just \( 2x \), how are we supposed to figure out which function it corresponds to? Well, while we cannot find the exact function that it corresponds to, we can do something almost as good.
+
+\begin{definition}{general antiderivatives and arbitrary constants}
+If \( F \left( x \right) \) is the antiderivative of \( f \left( x \right) \), then the family of functions \( F \left( x \right) + C \) is the \defterm{general antiderivative} of \( f \left( x \right) \). The constant \( C \) is called the "\defterm{Arbitrary Constant}" or the "Constant of Integration."
+\end{definition}
+
+\begin{tip}
+    One of the most common mistakes in finding antiderivatives that can be done by anyone is forgetting to add the arbitrary constant. Points \textit{will} be taken off if you do this, so be on the lookout for little mistakes like this.
+\end{tip}
+
+Essentially, we do not know what the constant value of the original function is, so we assign it to some unknown value that may be able to be found later.
+
+In order to find antiderivatives, you can try and match the derivatives and original functions that you already know or reverse the rules of derivatives. In later chapters, more advanced forms of finding antiderivatives will be introduced.
+
+\begin{example}{finding antiderivatives}
+    Because the derivative of \( \sin{x} \) is \( \cos{x} \), the antiderivative of \( \cos{x} \) is
+    
+    \[ y = \sin{x} + C \]
+\end{example}
+
+\begin{example}{more antiderivatives}
+    The following results can be verified by differentiating the right hand side.
+
+    \begin{align}
+        f^\prime \left( x \right) = 3 &\implies f \left( x \right) = 3x + C \\
+        f^\prime \left( x \right) = \sin{x} &\implies f \left( x \right) = -\cos{x} + C \\
+        f^\prime \left( x \right) = \cos{\left( 2x \right)} &\implies f \left( x \right) = \dfrac{1}{2} \sin{2x} + C \\
+        f^\prime \left( x \right) = 3x^2 &\implies f \left( x \right) = x^3 + C \\
+        f^\prime \left( x \right) = \dfrac{1}{2\sqrt{x}} &\implies f \left( x \right) = \sqrt{x} + C \\
+        f^\prime \left( x \right) = \dfrac{1}{x^2} &\implies f \left( x \right) = -\dfrac{1}{x} + C \\
+    \end{align}
+\end{example}
+
+From these and our general knowledge of derivatives, we can see a few general rules emerge. Ultimately, you should know \textbf{and understand} these, not just relying on rote memorization.
+
+\begin{definition}{antiderivative of a constant}
+    Because derivatives take away an \( x \) from linear terms to get constant terms, we can do the inverse, giving an \( x \) to constant terms. This is expressed as
+
+    \[ y^\prime = k \implies y = kx + C, \quad k \in \mathbb{R} \]
+\end{definition}
+
+\begin{example}{antiderivative of a constant}
+    Given the derivative of a function,
+    
+    \[ y^\prime = \pi \]
+    
+    We can see that the original function should be of the form
+    
+    \[ y = \pi x + C \]
+    
+    This can once again be verified through differentiating.
+\end{example}
+
+\begin{definition}{antiderivative of sums}
+    Antiderivatives work the same as derivatives for sums. The antiderivative of the sum of two functions is the same as the sum of the antiderivatives of the two functions. In other words, we can apply antidifferentiation by each term.
+
+    \[ y^\prime = f \left( x \right) + g \left( x \right) \implies y = F \left( x \right) + G \left( x \right) + C \]
+\end{definition}
+
+\begin{example}{antiderivative of sums}
+    Given the derivative,
+    
+    \[ y^\prime = 3x^2 + 2x \]
+    
+    We can apply antidifferentiation individually to each term to get
+    
+    \[ y = x^3 + x^2 + C \]
+    
+    Again, however, those with sharp intuition may have done something like this
+    
+    \[ y = x^3 + C_1 + x^2 + C_2 \]
+    
+    where \( C_1 \) and \( C_2 \) are again arbitrary constants. While this wouldn't be incorrect, we can combine these constants without any loss of generality because they are, well, arbitrary. An unknown number plus another unknown number will just be a possibly different unknown number. The same goes for multiplying, subtracting, dividing, or just about anything besides antidifferentiation again. The constant will always be arbitrary.
+\end{example}
+
+\begin{definition}{antiderivative constant multiple rule}
+    Another rule that holds to be same for both derivatives and antiderivatives is the constant multiple rule. If there is a number multiplied by a function, the antiderivative is simply that number multiplied by the antiderivative of that function.
+    
+    \[ y^\prime = kf \left( x \right) \implies y = kF \left( x \right) + C \]
+\end{definition}
+
+\begin{example}{antiderivative constant multiple rule}
+    Given the derivative,
+    
+    \[ y^\prime = 2\pi x \]
+    
+    The original function is
+    
+    \[ y = 2\pi \cdot \dfrac{x^2}{2} = \pi x^2 \]
+\end{example}
+
+\begin{definition}{antiderivative power rule}
+    The antiderivative power rule is essentially the opposite of the derivative power rule; instead of multiplying by the exponent and subtracting one from the it, we will reverse the order of operations and reverse the operations themselves. Now, we will add one to the exponent and divide by this new exponent. This is expressed as
+    
+    \[ y^\prime = x^n \implies y = \dfrac{1}{n + 1}x^{n + 1}, \quad n \ne -1 \]
+    
+    Note the restriction on \( n \). If we didn't have this, the original function would be undefined at \( n = -1 \), which would correspond to the derivative function \( y = \frac{1}{x} \). This function, in fact, has a special antiderivative.
+\end{definition}
+
+\begin{example}{antiderivative power rule}
+    Given the derivative,
+    
+    \[ y^\prime = x^{1/2} \]
+    
+    The antiderivative is
+    
+    \[ y = \dfrac{2}{3}x^{3/2} + C \]
+\end{example}
+
+\begin{definition}{antiderivative rational function}
+    The antiderivative of the function \( \frac{1}{x} \) is interesting because it does not follow the constant multiple rule previously given. If we recall from what derivatives we learned, we know that the derivative of \( \ln{x} \) is \( \frac{1}{x} \). In order to preserve the original domain of the function, however, an absolute value is added.
+    
+    \[ y^\prime = \dfrac{1}{x} \implies y = \ln{\abs{x}} + C \]
+\end{definition}
+
+\begin{definition}{antiderivative constant coefficient rule}
+    This rule is more so a specific subset of what we will learn in later chapters when we get to integrals. When there is a coefficient attached to an \( x \) term, you will divide by this constant term when finding the antiderivative. This is essentially the inverse of of the chain rule.
+    
+    \[ y^\prime = f \left( ax \right) \implies y = \dfrac{1}{a} F \left( ax \right) + C \]
+\end{definition}
+
+\begin{example}{antiderivative constant coefficient rule}
+    Given the derivative,
+    
+    \[ y^\prime = \cos{\left( 2\pi x \right)} \]
+    
+    We can find original function by dividing by the constant term and then finding the antiderivative as usual.
+    
+    \[ y = \dfrac{1}{2 \pi} \sin{\left( 2 \pi x \right)} + C \]
+\end{example}
+
+\subsubsection{Differential Equations}
+
+\begin{definition}{differential equation}
+    A \defterm{differential equation} is simply any equation that has a function and its derivative (or its higher-order derivatives) contained within it.
+\end{definition}
+
+\begin{example}{differential equation}
+    An example of a simple differential equation could be
+    
+    \[ \dfrac{dy}{dx} = \cos{\left( 2\pi x \right)} \]
+    
+    Perhaps another quite famous differential equation that you might see later in the year is
+    
+    \[ y = y^\prime \]
+    
+    Perhaps one famous differential equation in physics is Schrödinger's wave equation
+    
+    \[ i \hbar \dfrac{\partial}{\partial t}\Psi \left( \mathbf{r} , t \right) = \hat H \Psi \left( \mathbf{r}, t \right) \]
+\end{example}
+
+You may not have noticed, but we've already been doing work with differential equations, albeit simple ones, now that we are finding antiderivatives. If we are given a derivative, we are now able to find the original function with some constant term and solve the differential equation.
+
+Some differential equations will also give initial conditions or an \( x \) and \( y \) pair that tells you one point on the function. This one input gives a lot of information, but in particular, it allows for us to solve for the constant, giving us not a family of functions, but a single function.
+
+\begin{example}{differential equation with initial condition}
+    Find the curve whose slope at \( \left( x, y \right) \) is given by the function \( 3x^2 \) and passes through the point \( \left( 1, -1 \right) \).
+    
+    \vspace{0.3cm}
+    
+    Using our knowledge of antiderivatives, this is not so difficult. Since we are given that the slope is \( 3x^2 \), we know that the derivative is \( 3x^2 \). This allows us to find the original function to be
+    
+    \begin{align}
+        y = x^3 + C
+    \end{align}
+    
+    Here's where the fun part comes in. Because we are given an initial condition, our point where the curve passes through, we can now find the exact value of the constant. Simply substitute the \( x \) and \( y \) values accordingly.
+    
+    \begin{align}
+        -1 &= 1^3 + C \\
+        -1 &= 1 + C \\
+        -2 &= C
+    \end{align}
+    
+    This means that our curve is
+    
+    \[ y = x^3 - 2 \]
+\end{example}
+
+\section{Connecting \( f^\prime \) and \( f^{\prime\prime} \) with the Graph of \( f \)}
+
+This section is all about using derivatives to describe a function and using this derivative information to graph functions.
+
+\subsection{Finding Extrema with First Derivatives}
+
+\begin{definition}{first derivative test for local extreme values}
+    If \( f^\prime \left( c \right) = 0 \) and the sign of \( f^\prime \) changes at \( c \), then \( f \) has a local extreme value at \( c \).
+\end{definition}
+
+This test directly follows from what we have learned in the previous sections. Note, however, we make the distinction that the sign of the derivative must be different on both sides of the point \( c \). If this were not to be the case, the function would instead rest at the point, but not change direction and create an extremum.
+
+We can also use the sign of the derivative to determine the type of endpoint extrema (whether it is a max or min). For some left endpoint \( a \),
+
+\begin{itemize}
+    \item If \( \fp \left( x \right) < 0 \) for \( x > a \), there is a \textit{maximum} value at \( x = a \).
+    \item If \( \fp \left( x \right) > 0 \) for \( x > a \), there is a \textit{minimum} value at \( x = a \).
+\end{itemize}
+
+For some right endpoint \( b \),
+
+\begin{itemize}
+    \item If \( \fp \left( x \right) < 0 \) for \( x < b \), there is a \textit{minimum} value at \( x = b \).
+    \item If \( \fp \left( x \right) > 0 \) for \( x < b \), there is a \textit{maximum} value at \( x = b \).
+\end{itemize}
+
+The reasoning for this can be made much clearer through a sign chart or some sort of graph. Consider the following sign chart which has a left endpoint somewhere before \( x = -3 \) and a right endpoint after \( x = 1 \).
+
+\begin{figure}[H]
+    \centering
+    \includesvg[width=250pt]{Figures/SignChart_5_3_1.svg}
+\end{figure}
+
+We see that, in the leftmost box, the derivative is negative. This causes the function to decrease going forward from the point, leaving us with a maximum at the left endpoint. Similarly, the derivative is negative in the rightmost box. This causes the function to decrease as it approaches the point, creating a minimum.
+
+\subsection{Concavity and Second Derivatives}
+
+We can see that first derivatives help us to locate extreme values, but what can second derivatives tell us? The second derivative of the function tells about the concavity of the function.
+
+\begin{definition}{concavity and inflection points}
+    The \defterm{concavity} of a function is described by whether the function faces up or down on some interval. To better visualize this, these are the shapes that concave up and concave down functions make.
+    
+    \begin{figure}[H]
+        \centering
+        \includesvg[width=150pt]{Figures/ConcaveUpDown.svg}
+    \end{figure}
+    
+    We can figure out the concavity of a function over an interval by looking at the second derivative of the function.
+    
+    \begin{itemize}
+        \item When \( \fpp \left( x \right) > 0 \), the function is concave up.
+        \item When \( \fpp \left( x \right) < 0 \), the function is concave down.
+        \item When \( \fpp \left( x \right) = 0 \), this is a possible point of change in concavity.
+    \end{itemize}
+    
+    The point where the concavity changes is called the \defterm{point of inflection} (p.i.) or \defterm{inflection point} (i.p.).
+\end{definition}
+
+Just like with the zeroes of the first derivative, the zeroes of the second derivative are only \textit{possible} points of change in concavity. Only after verifying that the sign does indeed change from one side to another can we be sure that it is an actual point of inflection. Setting the second derivative equal to \( 0 \) is sometimes called the \defterm{Second Derivative Test for Inflection Points}.
+
+We can describe concavity quite simply by stating:
+
+\begin{enumerate}[label=\alph*.]
+    \item The concavity of the function.
+    \item That the second derivative is positive or negative.
+    \item The interval in which the second derivative is positive or negative.
+\end{enumerate}
+
+\begin{example}{describing concavity of functions}
+    How can we describe the concavity of the following function?
+    
+    \[ y = x^3 \]
+    
+    \vspace{0.3cm}
+    
+    Immediately we can see that the second derivative will turn out to be
+    
+    \begin{align}
+        \yp &= 3x^2 \\
+        \implies \ypp &= 6x
+    \end{align}
+    
+    From here, you can construct a sign chart if it will help. It is clear that the second derivative is negative for negative numbers and positive for positive numbers. A typical AP test level response would look something like:
+    
+    \begin{center}
+        \( y \) is concave down on \( \left( -\infty, 0 \right) \) because \( \ypp < 0 \) on \( \left( -\infty, 0 \right) \).
+        
+        \( y \) is concave up on \( \left( 0, \infty \right) \) because \( \ypp > 0 \) on \( \left( 0, \infty \right) \).
+    \end{center}
+\end{example}
+
+If the second derivative is a constant, then it will always have a concavity corresponding to the sign of that constant. This is the case for quadratic functions.
+
+Second derivatives can also be used to differentiate whether a local extremum is a maximum or a minimum.
+
+\begin{definition}{second derivative test for local extreme values}
+    If \( \fp \left( c \right) = 0 \) and \( \fpp \left( c \right) < 0 \), then \( f \) has a local maximum at \( x = c \).
+    
+    If \( \fp \left( c \right) = 0 \) and \( \fpp \left( c \right) > 0 \), then \( f \) has a local minimum at \( x = c \).
+\end{definition}
+
+At first, it might feel a bit off to see that a positive second derivative corresponds to a minimum, but if you think about how a positive second derivative means faster acceleration and how faster acceleration means that the function will go above that point, it makes sense.
+
+Both tests will be asked for on the test, so make sure that you know and understand both of them.
+
+\subsection{Graphing Using Derivative Information}
+
+If you are given a function \( f \left( x \right) \) and asked to determine the graph using derivatives, you can follow this short plan:
+
+\begin{enumerate}
+    \item Find the first and second derivatives of \( f \left( x \right) \).
+    \item Find where the first derivative is positive, negative, or zero to confirm where the function is increasing, decreasing, and where it might have extrema.
+    \item Find where the second derivative is positive, negative, or zero to confirm where the function is concave up or concave down and where inflection points can be found.
+    \item Sketch your graph using the information given.
+    \item If allowed, check with a graphing calculator, setting it to the appropriate window size.
+\end{enumerate}
+
+\subsection{Increasing and Decreasing Speed}
+
+Often times you may be asked to determine the intervals on which speed is increasing or decreasing, but what does this mean?
+
+Given a position function \( y \),
+
+\begin{itemize}
+    \item The speed of the function is increasing when \( \yp \) and \( \ypp \) have the same sign.
+    \item The speed of the function is decreasing when \( \yp \) and \( \ypp \) have a different sign.
+\end{itemize}
+
+This makes some sense intuitively. If the velocity and the acceleration are working together, the speed will increase. If they are working against each other, though, the speed will decrease.
+
+To see this in action, let us view an example.
+
+\begin{example}{finding intervals of increasing and decreasing speed}
+    Suppose we are given the position function
+    
+    \[ y = 2x^3 - 9x^2 + 12x - 5 \]
+    
+    How would we determine when the speed is increasing and decreasing?
+    
+    \vspace{0.3cm}
+    
+    First, we will get finding the derivatives out of the way.
+    
+    \begin{align}
+        \yp &= 6x^2 - 18x + 12 \\
+        &= 6 \left( x - 2 \right) \left( x - 1 \right) \\
+        \ypp &= 12x - 18 \\
+        &= 6 \left( 2x - 3 \right)
+    \end{align}
+    
+    Thus, we have our first derivative critical values to be \( x = 1 \) and \( x = 2 \) and our possible point of inflection to be \( x = 3/2 \). From here, we can construct the following sign chart.
+    
+    \begin{figure}[H]
+        \centering
+        \includesvg[width=200pt]{Figures/SignChart_5_3_2.svg}
+    \end{figure}
+    
+    If the signs of the two derivatives are compared to the graph of \( \abs{\yp} \) (the speed function), an interesting pattern emerges. On the intervals in which the signs are the same, the speed will be increasing. On the intervals in which the signs of the first and second derivatives are different, the speed will be decreasing. From here, we can give a written answer such as:
+    
+    \begin{center}
+        The speed of \( y \) is decreasing on \( \left( -\infty, 1 \right] \) because \( \yp \) and \( \ypp \) have opposite signs on \( \left( -\infty, 1 \right) \).
+        
+        The speed of \( y \) is increasing on \( \left[ 1, 3/2 \right] \) because \( \yp \) and \( \ypp \) have the same sign on \( \left( 1, 3/2 \right) \).
+        
+        The speed of \( y \) is decreasing on \( \left[ 3/2, 2 \right] \) because \( \yp \) and \( \ypp \) have opposite signs on \( \left( 3/2, 2 \right) \).
+        
+        The speed of \( y \) is increasing on \( \left[ 2, \infty \right) \) because \( \yp \) and \( \ypp \) have the same sign on \( \left( 2, \infty \right) \).
+    \end{center}
+\end{example}
+
+\newpage
+
+\subsection{Sentence Explanation Cheat Sheet}
+
+As you've probably seen, there are plenty of written explanations that you will have to give for the AP test that involve identify specific points and intervals based on derivatives. The wording for these are slightly different and possibly confusing at times, so this will be an attempt to organize them.
+
+If you have a hard time memorizing these as well as all of the theorems, I would recommend making flashcards.
+
+\textbf{Increasing and Decreasing}
+
+\begin{itemize}
+    \item \( y \) is increasing on \( \left[ a, b \right] \) because \( \yp > 0 \) on \( \left( a, b \right) \).
+    \item \( y \) is decreasing on \( \left[ a, b \right] \) because \( \yp < 0 \) on \( \left( a, b \right) \).
+\end{itemize}
+
+\textbf{Maxima and Minima}
+
+\begin{itemize}
+    \item Because \( \yp = 0 \) at \( x = a \) and \( \yp \) changes from positive to negative, there is a local maximum at \( \left( a, b \right) \).
+    \item Because \( \yp = 0 \) at \( x = a \) and \( \yp \) changes from negative to positive, there is a local minimum at \( \left( a, b \right) \).
+\end{itemize}
+
+\textbf{Concavity}
+
+\begin{itemize}
+    \item \( y \) is concave up on \( \left( a, b \right) \) because \( \ypp > 0 \) on \( \left( a, b \right) \).
+    \item \( y \) is concave down on \( \left( a, b \right) \) because \( \ypp < 0 \) on \( \left( a, b \right) \).
+\end{itemize}
+
+\textbf{Points of Inflection}
+
+\begin{itemize}
+    \item There is an inflection point at \( \left( a, b \right) \) where \( \ypp = 0 \) and \( \ypp \) changes from [positive/negative] to [negative/positive] at \( x = a \).
+\end{itemize}
+
+\textbf{Increasing and Decreasing Speed}
+
+\begin{itemize}
+    \item The speed of \( y \) is increasing on \( \left[ a, b \right] \) because \( \yp \) and \( \ypp \) have the same sign on \( \left( a, b \right) \).
+    \item The speed of \( y \) is decreasing on \( \left[ a, b \right] \) because \( \yp \) and \( \ypp \) have opposite signs on \( \left( a, b \right) \).
+\end{itemize}
+
+\section{Optimizing Problems}
+
+\subsection{General Problem-Solving Strategies}
+
+One practical, real application of derivatives is in optimizing problems. In an optimizing problem, you have multiple unknowns and a value relating these two unknowns that you want to maximize or minimize. Given enough context, you can write one of these unknowns in terms of the other and then, using the power of calculus and derivatives, you can maximize or minimize this value.
+
+The general strategy for solving optimizing problems is the following:
+
+\begin{enumerate}
+    \item Start by understanding or intuiting the word problem and what exactly it is asking for.
+    \item Build a model for the problem that organizes the information.
+    \item Graph the model and identify the domain of the variables given the context of the problem.
+    \item Identify extrema, looking at critical points and endpoints.
+    \item Solve the model using derivatives and algebra.
+    \item Check to make sure your answer makes sense.
+\end{enumerate}
+
+Some equation will have multiple solutions, based on the problem, but oftentimes some of these will be extraneous. Make sure to use the context of the problem to determine whether a value is extraneous. For example, if you find a geometric length to be negative, you can quite confidently discard it.
+
+In addition, the you may need to use the second derivative test to show that the value that you have found is a maximum or minimum.
+
+\subsection{Optimizing Problem Examples}
+
+The best way to learn, especially for these types of problems, is with examples.
+
+\begin{examplebreak}{sum/product optimizing problem}
+    There are two numbers whose sum equates to \( 50 \). What is maximum possible value of their product?
+    
+    \vspace{0.3cm}
+    
+    After reading the problem and thinking for a bit, we can organize some of this information. We have two numbers \( x, y \in \mathbb{R} \) such that
+    
+    \[ x + y = 50 \]
+    
+    And we are trying to find the maximum value of
+    
+    \[ p = xy \]
+    
+    where \( p \) stands for product. Here, we are left with three unknowns, but two equations, allowing us to rewrite at least one in terms of another. Using the first equation, we can rewrite the product as
+    
+    \[ p = x \left( 50 - x \right) \]
+    
+    Now that we have a function only in terms of \( x \), we can find the maximum value using the first derivative test. Differentiating and solving, we get
+    
+    \begin{align}
+        p &= x \left( 50 - x \right) \\
+        &= 50x - x^2 \\
+        \implies \dfrac{dp}{dx} &= 50 - 2x \\
+        0 &\stackrel{\text{set}}{=} 50 - 2x \\
+        \implies x &= 25
+    \end{align}
+    
+    This means that \( x = 25 \) is an extreme value, either a maximum or a minimum. While, intuitively, we might know that this is a maximum, we need to show that this is the case. We can do this by using the second derivative test.
+    
+    \begin{align}
+        &\dfrac{d^2p}{dx^2} = -2 \\
+        &\dfrac{d^2p}{dx^2} \left( 25 \right) < 0
+    \end{align}
+    
+    Because the second derivative is less than zero at \( x = 25 \), we have a maximum value by the second derivative test. This assures us that our \( x \) value we solved for will give us the maximum product, and not the minimum one. Now that we have this \( x \), we can plug it back into the original product function to answer the question. Doing so we see,
+    
+    \begin{align}
+        p \left( 25 \right) &= 25 \cdot \left( 50 - 25 \right) \\
+        &= 25^2 \\
+        &= 625
+    \end{align}
+    
+    The maximum product that can be achieved by two numbers that add up to \( 50 \) is \( 625 \).
+\end{examplebreak}
+
+\begin{examplebreak}{oil can optimization}
+    Suppose that a one-liter oil can is shaped like a right circular cylinder. Not consider thickness, what dimensions will use the least amount of material?
+    
+    \vspace{0.3cm}
+    
+    Let's unpack this problem. We have a cylinder of unknown dimensions that has a volume of \( 1 \, \si{\liter} \) which is \( 1000 \, \si{\cm^3} \) by definition. We also know that the volume of a regular cylinder is \( \pi r^2 h \), where \( r \) is the radius of the base and \( h \) the height of the cylinder.
+    
+    The value that we are trying to optimize for is the material used, which is the surface area. We know that the surface area of a cylinder is the area of the two circles plus the rectangular portion. Expressed mathematically, this is \( 2 \pi r^2 + 2 \pi r h \).
+    
+    In short, we have a system of two equations and three unknowns (\( r \), \( h \), and \( S \)), so we can hope to at least get one equation with two unknowns (\( r \) and \( S \)).
+    
+    \begin{align}
+        V &= 1000 = \pi r^2 h \\
+        S &= 2 \pi r^2 + 2 \pi r h
+    \end{align}
+    
+    Perhaps you'll notice that, by manipulating the volume equation, we can isolate \( h \). This allows us to replace \( h \) in the surface area equation.
+    
+    \begin{align}
+        1000 &= \pi r^2 h \\
+        \implies h &= \dfrac{1000}{\pi r^2} \\
+        \implies S &= 2 \pi r^2 + 2 \pi r \left( \dfrac{1000}{\pi r^2} \right) \\
+        \implies S &= 2 \pi r^2 + 2 \cancel{\pi} \cancel{r} \left( \dfrac{1000}{\cancel{\pi} r^{\cancel{2}}} \right) \\
+        &= 2 \pi r^2 + \dfrac{2000}{r}
+    \end{align}
+    
+    Now we have a function of one variable, allowing us to differentiate and easily solve for extrema.
+    
+    \begin{align}
+        \dfrac{dS}{dr} &= 4 \pi r - \dfrac{2000}{r^2} \\
+        0 &= 4 \pi r - \dfrac{2000}{r^2} \\
+        \dfrac{2000}{r^2} &= 4 \pi r \\
+        500 &= \pi r^3 \\
+        \implies r &= \sqrt[3]{\dfrac{500}{\pi}}
+    \end{align}
+    
+    Before we precede, we need to prove that this is a minimum using the second derivative test. Differentiating surface area once more, we see
+    
+    \begin{align}
+        &\dfrac{d^2S}{dr^2} = 4 \pi + \dfrac{4000}{r^3} \\
+        &\dfrac{d^2S}{dr^2} \left( \sqrt[3]{\dfrac{500}{\pi}} \right) > 0
+    \end{align}
+    
+    Because the second derivative is positive, it is a minimum. Now, confident in our answer, we can find the value of \( h \).
+    
+    \begin{align}
+        h &= \dfrac{1000}{\pi r^2} \\
+        \implies h &= \dfrac{1000}{\pi \left( \frac{500}{\pi} \right)^{2/3}}
+    \end{align}
+    
+    Thus, the dimensions that minimize the material used to construct a one-liter cylindrical oil container are a radius of \( \sqrt[3]{\frac{500}{\pi}} \, \si{\cm} \) and a height of \( \frac{1000}{\pi \left( \frac{500}{\pi} \right)^{2/3}} \, \si{\cm} \).
+\end{examplebreak}
+
+\begin{examplebreak}{maximizing profit}
+    Given a revenue and cost functions
+    
+    \begin{align*}
+        r \left( x \right) &= 10x \\
+        c \left( x \right) &= x^3 - 6x^2 + 15x + 5
+    \end{align*}
+    
+    What production rate will maximize net profits?
+    
+    \vspace{0.3cm}
+    
+    The first thing that we will have to do is recall that profit is the difference between revenue and cost. In order words,
+    
+    \begin{align}
+        p \left( x \right) &= r \left( x \right) - c \left( x \right) \\
+        p \left( x \right) &= \left( 10x \right) - \left( x^3 - 6x^2 + 15x + 5 \right) \\
+        p \left( x \right) &= -x^3 + 6x^2 - 5x - 5
+    \end{align}
+    
+    Now this problem is trivial because, unlike the other problems, we don't have to deal with multiple unknowns. Simply differentiate to get
+    
+    \begin{align}
+        p^\prime \left( x \right) &= -3x^2 + 12x - 5
+    \end{align}
+    
+    Using a calculator now (which will be allowed for some of these problems), we get two solutions:
+    
+    \begin{align*}
+        x &\approx 0.472 \\
+        x & \approx 3.528
+    \end{align*}
+    
+    Now that we have two extrema, we can use the second derivative test to determine which is the maximum.
+    
+    \begin{align}
+        &p^{\prime \prime} \left( x \right) = -6x + 12 \\
+        &p^{\prime \prime} \left( 0.472 \right) > 0 \\
+        &p^{\prime \prime} \left( 3.528 \right) < 0
+    \end{align}
+    
+    Because the second derivative is negative at \( x \approx 3.528 \), it is the maximum. Because this is a production rate (the number of items being produced), we cannot have a non-integer value. This means that we can either round or truncate.
+    
+    To conclude, a production rate of \( 4 \) items will maximize profits.
+\end{examplebreak}
+
+As you'll notice, the hardest part of these problems is often not the calculus or algebra but the critical thinking required to get us to those steps. Further practice problems can be found online or in your homework.
+
+\section{Estimation and Differentials}
+
+\subsection{Newton's Method}
+
+\subsubsection{Explanation and Derivation}
+
+Newton's method is an iterative process that allows for better and better approximations of the zeroes of functions. We first pick a \( x_0 \) value as a guess for the intercept of the function. Next, we can construct the tangent line at this point. We can then find the \( x \)-intercept of this tangent line far easier, simply being a linear equation. We can then name the value that we get from solving this linear equation \( x_1 \). This now becomes our new "guess" value, allowing us to repeat the process as many more times as we'd like, with our guess getting more and more precise (most of the time anyway).
+
+\begin{figure}[H]
+    \centering
+    \includesvg[width=350pt]{Figures/NewtonsMethod.svg}
+\end{figure}
+
+To mathematically represent this, we can use point-slope form. Note that all \( x_n \) represents is the \( x \) value in the \( n \)th iteration of the process.
+
+\begin{align*}
+    y - f \left( x_n \right) &= f^\prime \left( x_n \right) \left( x_{n + 1} - x_n \right)
+\end{align*}
+
+Knowing \( y \) will be zero (because this is an \( x \)-intercept), this simplifies to
+
+\begin{align*}
+    - f\left( x_n \right) &= f^\prime \left( x_n \right) \left( x_{n + 1} - x_n \right)
+\end{align*}
+
+Suppose we wanted to solve for \( x_{n + 1} \), which is the \( x \) value of the next iteration, or the next, slightly more precise "guess" for the value of the zero of the function. With some simple algebraic manipulation, we get
+
+\begin{align*}
+    f^\prime \left( x_n \right) \left( x_{n + 1} - x_n \right) &= - f \left( x_n \right) \\
+    x_{n + 1} - x_n &= - \dfrac{f \left( x_n \right)}{f^\prime \left( x_n \right)} \\
+    x_{n + 1} &= x_n - \dfrac{f \left( x_n \right)}{f^\prime \left( x_n \right)}
+\end{align*}
+
+This is a nice closed form for the next iteration of Newton's method.
+
+\subsubsection{A Calculator Shortcut}
+
+This method was invented by Newton, who didn't have a calculator but certainly had quite a bit of free time on his hands. Thanks to technology, however, we can use a calculator to speed up this process. Using the formula that we just derived, it is possible to calculate an iteration in just a click of a button on your calculator.
+
+If you are using a TI-84 or TI-89, you can input the function whose zeroes you want to find into \( y_1 \) and then input the following into \( y_2 \).
+
+\[ x - y_1 / {\textstyle \frac{d}{dx}} \left( y_1 \right) \vert_{x = x} \]
+
+Going back to the main window, you can then first enter
+
+\[ y_2 \left( x_0 \right) \]
+
+where \( x_0 \) is your guess value that you will replace with a number. For the next input, type in
+
+\[ y_2 \left( \text{Ans} \right) \]
+
+You can now press \verb+enter+ as many times as you want, with each click representing one iteration of the method.
+
+Record the values that you get to three decimal places and stop when these rounded values start to equal each other. Some questions will give you a starting guess to work from, while others will require to you guess a value yourself.
+
+\begin{example}{finding zeroes of a parabola}
+    Suppose we have the function
+    
+    \[ y = x^2 - 5 \]
+    
+    Use Newton's Method to find an \( x \) value such that \( y = 0 \) given a starting guess of \( x_0 = 3 \).
+    
+    \vspace{0.3cm}
+    
+    Plugging the function and the simplified Newton's method formula into our calculator, you should get the following.
+    
+    \begin{align*}
+        x_0 &= 3 \\
+        x_1 &\approx 2.333 \\
+        x_2 &\approx 2.238 \\
+        x_3 &\approx 2.236 \\
+        x_4 &\approx 2.236 \\
+    \end{align*}
+    
+    Because \( x_4 = x_3 \), our final answer for the estimate is \( x_4 = 2.236 \).
+\end{example}
+
+\subsection{Linearization}
+
+We know that, given a function and a particular \( x \) value, we can construct a line that is tangent to the curve, just touching the function at the point. An interesting property can be observed, however, when we zoom in on this tangent line alongside the function at our point. If we look closer at \textit{the values around this point}, we can see that the tangent line is relatively close to them, what we term \defterm{locally straight}. This relative closeness means that, if we evaluate the tangent line function at values close to our original point, we can gain a decent estimation of the value of the original function.
+
+\begin{figure}[H]
+    \centering
+    \includesvg[width=200pt]{Figures/Linearization.svg}
+\end{figure}
+
+Using the tangent line to estimate these values is called the \defterm{linearization} of the function. Especially when we cannot use a calculator, this is a helpful tool.
+
+\begin{definition}{linearization}
+    The \defterm{linearization} of a function \( f \left( x \right) \) centered around a point \( a \) is defined as
+    
+    \[ L \left( x \right) = f \left( a \right) + f^\prime \left( a \right) \left( x - a \right) \]
+\end{definition}
+
+We can see that this formula is simply derived from point-slope form, just having added the \( f \left( a \right) \) term to the other side. Note that, because we have to calculate the aforementioned \( f \left( a \right) \) term, we must choose an \( a \) value that gives us a clean value. Quite obviously as well, the function must be differentiable at the \( a \) value we pick.
+
+\begin{example}{linearization of a rational function}
+    Estimate the value of \( f \left( 1.2 \right) \) without a calculator, given that
+    
+    \[ f \left( x \right) = \dfrac{x^3 + 3x^2 + 2x + 6}{x^2 - 7} \]
+    
+    \vspace{0.3cm}
+    
+    We can take the derivative first to see an \( a \) value that is close to \( 1.2 \) and works well to plug in. Using the Quotient Rule,
+    
+    \begin{align}
+        \yp &= \dfrac{\left( x^2 - 7 \right) \left(3x^2 + 6x + 2 \right) - \left( 2x \right) \left( x^3 + 3x^2 + 2x + 6 \right)}{\left( x^2 - 7 \right)^2}
+    \end{align}
+    
+    Because we are plugging in a value to the function, there is no need to simplify further. In addition, we can see that a nice value for this function that is quite close to \( 1.2 \) would be \( a = 1 \). If we plug this value in, we can get our tangent slope.
+    
+    \begin{align}
+        \yp &= \dfrac{\left( -6 \right) \left( 11 \right) - \left( 2 \right) \left( 12 \right)}{36} \\
+        &= \dfrac{-66 - 24}{36} \\
+        &= -\dfrac{80}{36} \\
+        &= -\dfrac{5}{2} \\
+        &= -2.5
+    \end{align}
+    
+    Now, with our slope, we can construct a linearization function (which is really just a tangent line), centered around \( a = 1 \).
+    
+    \begin{align}
+        L \left( x \right) &= f \left( 1 \right) - 2.5 \left( x - 1 \right) \\
+        &= -2 - 2.5 \left( x - 1 \right)
+    \end{align}
+    
+    Now all that's left is to plug in our original \( x \) value and gain an estimate from the tangent line.
+    
+    \begin{align}
+        L \left( 1.2 \right) &= -2 - 2.5 \left( 1.2 - 1 \right) \\
+        &= -2 - 2.5 \left( 0.2 \right) \\
+        &= -2 - 0.5 \\
+        &= -2.5
+    \end{align}
+    
+    Thus, our estimate for the value of \( f \left( 1.2 \right) \) is \( -2.5 \).
+    
+    If we were asked to calculate the error, we would just need to take the difference between the estimate and the actual value.
+    
+    \begin{align}
+        &-2.5 - f \left( 1.2 \right) \\
+        &= -2.5 - \left( -2.598561151 \cdots \right) \\
+        &= 0.098561151 \cdots \\
+        &\approx 0.010
+    \end{align}
+    
+    Thus, the decimal error is approximately \( 0.010 \).
+\end{example}
+
+\begin{example}{estimating roots with linearization}
+    Using linearization, estimate the value of the following radical:
+    
+    \[ \sqrt{24} \]
+    
+    \vspace{0.3cm}
+    
+    In order to use linearization, we need a function that we can differentiate, but this problem doesn't give us one right off the bat. Instead, we have to create our own. The most natural decision would be to choose the following function:
+    
+    \[ y = \sqrt{x} \]
+    
+    Now we have to differentiate in order to obtain a function for the tangent slope. Doing so, we get
+    
+    \[ \yp = \dfrac{1}{2 \sqrt{x}} \]
+    
+    Notice that, because \( 25 \) is a perfect square and also close to \( 24 \), it will be a perfect value to choose for \( a \). Using our linearization formula, we can now simply plug in our numbers and solve.
+    
+    \begin{align}
+        L \left( x \right) &= f \left( 25 \right) + f^\prime \left( 25 \right) \left( x - 25 \right) \\
+        &= 5 + \dfrac{1}{10} \left( x - 25 \right)
+    \end{align}
+    
+    Now we can estimate the value at \( x = 24 \).
+    
+    \begin{align}
+        L \left( 24 \right) &= 5 + \dfrac{1}{10} \left( 24 - 25 \right) \\
+        &= 5 - \dfrac{1}{10} \\
+        &= \dfrac{49}{10} \\
+        &= 4.9
+    \end{align}
+    
+    Thus, the value of \( \sqrt{24} \) is approximately equal to \( 4.9 \).
+\end{example}
+
+On test, you may be given the following graph and asked to identify which capital letters represent certain values.
+
+\begin{figure}[H]
+    \centering
+    \includesvg[width=320pt]{Figures/LinearizationGraph.svg}
+\end{figure}
+
+To first do this, we need to learn the notation used to express changes in values that go along with linearization.
+
+\begin{notation}{linearization changes}
+    When working with linearization and error, mathematicians use the following notation.
+    
+    \begin{itemize}
+        \item \( \Delta x \) represents the \textbf{actual} change in some value \( x \).
+        \item \( \partial x \) or simply \( dx \) represents the \textbf{estimated} change in some value \( x \).
+    \end{itemize}
+    
+    If we are finding the difference between \( f \left( x_0 \right) \) and \( f \left( x_1 \right) \) for some function \( f \), we would use \( \Delta f \), because it is an exact change in the function. If, instead, we were to find the difference between \( f \left( x_0 \right) \) and \( L \left( x_1 \right) \), however, we would use \( \partial f \) because we are finding the difference between one point on the function and an estimated point on the linearization function.
+\end{notation}
+
+Keeping this notation in mind, can you figure out what capital letters on the graph correspond to the following?
+
+\begin{multicols}{2}
+    \begin{itemize}
+        \item \( \Delta f = \Delta y \)
+        \item \( \partial f = \Delta L = \partial y = \fp \left( x_0 \right) dx \)
+        \item \( \partial x = \Delta x \)
+        \item \( f \left( E \right) = L \left( E \right) \)
+        \item \( f \left( E + h \right) \)
+        \item \( L \left( E + h \right) \)
+    \end{itemize}
+\end{multicols}
+
+Here are the solutions:
+
+\begin{itemize}
+    \item \( \Delta f = \Delta y \) corresponds to letter \( D \). \( D \) represents the actual change in the function from \( x = E \) to \( x = F \). We also know that, because \( y = f \left( x \right) \), the change in \( f \) is exactly the same as the change in the \( y \).
+    
+    \item \( \partial f = \Delta L = \partial y = \fp \left( x_0 \right) dx \) corresponds to letter \( H \). \( H \) represents the change in \( y \) calculated using the tangent line, making it an estimate. We also know from basic differentials that
+    \begin{align*}
+        y &= f \left( x \right) \\
+        \implies \dfrac{dy}{dx} &= \fp \left( x \right) \\
+        \implies dy &= \fp \left( x \right) dx
+    \end{align*}
+    
+    \item \( \partial x = \Delta x \) corresponds to letter \( G \). As we move from \( x = E \) to \( x = F \), this change is always the same value \( h \), whether we are estimating or not. The only capital that represents this is \( G \).
+    
+    \item \( f \left( E \right) = L \left( E \right) \) corresponds to letter \( C \). \( C \) is the line with the value of the function at \( x = E \). In addition, because the linearization is centered around \( x = E \), the line is tangent to that one point, meaning that it passes through one same point.
+    
+    \item \( f \left( E + h \right) \) corresponds to letter \( A \). \( A \) corresponds to the \( y \) value of the function at \( x = E + h = F \).
+    
+    \item \( L \left( E + h \right) \) corresponds to letter \( B \). \( B \) represents the \( y \) value of the linearization at \( x = E + h = F \).
+\end{itemize}
+
+\subsection{Differentials}
+
+Using differentials is another way to estimate values with derivatives, based on the same idea as linearization.
+
+Suppose we have a function
+
+\begin{align*}
+    y &= f \left( x \right)
+\end{align*}
+
+Using Leibniz's notation, we know that we can take the derivative of both sides and then (the key part) separate the differentials.
+
+\begin{align*}
+    \dfrac{dy}{dx} &= \fp \left( x \right) \\
+    dy &= \fp \left( x \right) dx
+\end{align*}
+
+Instead of plugging our original, potentially annoying, value into the function, we can decompose it into two parts, a close, easier to use value (this will be the \( x \) that is plugged into the differential equation) and the difference between the original value and our new value (this will be the \( dx \) value because it represents a change in \( x \)).
+
+Doing so gives us a numerical \( dy \) value, which can be added to the value of \( y \) obtained by plugging in the cleaner \( x \) value. Thus, our final estimate for the value will be \( y + dy \).
+
+\begin{example}{estimating roots with differentials}
+    Estimate the following value using differentials.
+    
+    \begin{align*}
+        \sqrt{26}
+    \end{align*}
+    
+    \vspace{0.3cm}
+    
+    Looking at this, it is clear to see that the parent function is simply the square root function.
+    
+    \begin{align}
+        y &= \sqrt{x}
+    \end{align}
+    
+    We can now differentiate this and separate the differentials to solve for \( dy \).
+    
+    \begin{align}
+        \dfrac{dy}{dx} &= \dfrac{1}{2\sqrt{x}} \\
+        dy &= \dfrac{1}{2\sqrt{x}} dx
+    \end{align}
+    
+    Instead of using \( x = 26 \), which is hard to work with, we can choose \( x = 25 \), a perfect square. Consequently, \( dx = 26 - 25 = 1 \).
+    
+    \begin{align}
+        dy &= \dfrac{1}{2 \sqrt{25}} \cdot 1 \\
+        &= \dfrac{1}{10}
+    \end{align}
+    
+    Now we can find our final answer to be
+    
+    \begin{align}
+        &f \left( x \right) + dy \\
+        = \, &\sqrt{25} + \dfrac{1}{10} \\
+        = \, &5 + \dfrac{1}{10} \\
+        = \, &5.1
+    \end{align}
+    
+    Thus, the value of \( \sqrt{26} \) is approximately \( 5.1 \).
+\end{example}
+
+It is also important to note the difference between when the question asks for the differential (just \( dy \)) or asks to estimate using differentials (which is \( y + dy \)).
+
+\begin{examplebreak}{change in area of a circle}
+    The radius of a circle increases from an initial value \( r = 10 \) by a change of \( \Delta r = 0.1 \). Answer the following questions:
+    
+    \begin{enumerate}
+        \item Using differentials estimate the increase in the circle's area.
+        \item Estimate the new \( A \) value after increasing by \( \Delta r \).
+        \item Compare \( dA \) to \( \Delta A \) by finding the percentage of error.
+    \end{enumerate}
+    
+    \vspace{0.3cm}
+    
+    Using differentials, solving these is quite straightforward.
+    
+    \begin{enumerate}
+        \item Because the estimation of the increase in the circle's area is just \( dA \), this problem wants us to solve for \( dA \). We can do so by differentiating and separating. Using the fact that this is a circle,
+        
+        \begin{align*}
+            A &= \pi r^2 \\
+            \implies \dfrac{dA}{dr} &= 2 \pi r \\
+            dA &= 2 \pi r dr
+        \end{align*}
+        
+        Since we know that \( r = 10 \) and \( dr = 0.1 = \Delta r   \), we can now substitute these values in to find the estimated value \( dA \).
+        
+        \begin{align*}
+            dA &= 2 \pi \left( 10 \right) \left( 0.1 \right) \\
+            &= 2 \pi
+        \end{align*}
+        
+        Thus, the estimated increase in area would be \( 2 \pi \).
+        
+        \item In order to estimate the new \( A \), all we need to do is add the original \( A \) value and the estimated increase \( dA \).
+        
+        \begin{align*}
+            &A + dA \\
+            = &100 \pi + 2 \pi \\
+            = &102 \pi
+        \end{align*}
+        
+        \item The first thing that this problem asks us to do is find the exact change in area. We can do so by simply subtracting the area after the increase in radius with the original area.
+        
+        \begin{align*}
+            &A \left( 10.1 \right) - A \left( 10 \right) \\
+            = &\pi \left( 10.1 \right)^2 - \pi \left( 10 \right)^2 \\
+            = &\pi \left( 10.1 - 10 \right) \left( 10.1 + 10 \right) \\
+            = &\pi \left( 0.1 \right) \left( 20.1 \right) \\
+            = &2.01 \pi
+        \end{align*}
+        
+        We can now take our exact change in area as well as our estimate and find the percent error between them. Unlike science classes, we use the following formula to calculate percent error:
+        
+        \[ 100 \% \cdot \abs{\dfrac{dx}{x}} = \text{error \%} \]
+        
+        where \( x \) represents some value. In our case, our value is the area, so we will have the change in area on the numerator (for this problem the difference between these changes), over the original area of the circle.
+        
+        \begin{align*}
+            &100 \% \cdot \abs{\dfrac{2 \pi - 2.01 \pi}{100 \pi}} \\
+            = &0.01 \%
+        \end{align*}
+    \end{enumerate}
+\end{examplebreak}
+
+\newpage
+
+\begin{examplebreak}{review problem}
+    Given the function
+
+    \[
+        y = \sqrt{ x } - 4x + 2
+    \]
+
+    use the following three methods to estimate or evaluate when \( x = 4.2 \).
+
+    \begin{enumerate}
+        \item Calculator
+        \item Linearization
+        \item Differentials
+    \end{enumerate}
+
+    \vspace{0.3cm}
+
+    This problem provides for a good review of what we have done so far.
+
+    \begin{enumerate}
+        \item This part isn't too hard. All we are asked to do is find the exact value of the function at \( x = 4.2 \). Plugging this into our calculator and rounding to three decimals, we get
+
+        \[
+            y \left( 4.2 \right) = -12.751
+        \]
+
+        \item With linearization, we first need to take the derivative and then choose an appropriate \( x \) value. Starting with the derivative, we get
+
+        \[
+            y^\prime = \frac{1}{2 \sqrt{ x }} - 4
+        \]
+
+        Because we have a square root, we should choose a perfect square \( x \) value. Luckily, \( x = 4 \) works and is quite close to our original value. We can now calculate our slope and set up a linearization function.
+
+        \begin{align*}
+            y^\prime \left( 4 \right) &= \frac{1}{2 \sqrt{ 4 }} - 4 \\
+            &= \frac{1}{4} - 4 \\
+            &= -3.75 \\
+            \implies L \left( x \right) &= f \left( 4 \right) - 3.75 \left( x - 4 \right) \\
+            &= -12 - 3.75 \left( x - 4 \right)
+        \end{align*}
+
+        Now we can plug our actual \( x \) value into the linearization function.
+
+        \begin{align*}
+            L \left( 4.2 \right) &= -12 - 3.75 \left( 4.2 - 4 \right) \\
+            &= -12 - 3.75 \left( 0.2 \right) \\
+            &= -12 - 0.75 \\
+            &= -12.75
+        \end{align*}
+
+        Thus, our estimate for \( f \left( 4.2 \right) \) using linearization is \( -12.75 \).
+
+        \item This problem is quite similar when using differentials. We must first take the derivative and separate the differentials.
+
+        \begin{align*}
+            \frac{dy}{dx} &= \frac{1}{2 \sqrt{ x }} - 4 \\
+            \implies dy &= \left( \frac{1}{2 \sqrt{ x }} - 4 \right) dx
+        \end{align*}
+
+        Once again, we have to choose a proper \( x \) value. From the previous problem, we already know that we should pick \( x = 4 \). This makes our \( dx \) value equal to \( 0.2 \). Plugging these two values in allows us to solve for \( dy \).
+
+        \begin{align*}
+            dy &= \left( \frac{1}{2 \sqrt{4}} - 4 \right) \left( 0.2 \right) \\
+               &= \left( -3.75 \right) \left( 0.2 \right) \\
+               &= -0.75
+        \end{align*}
+
+        To get our final answer, we now add this \( dy \) value to the \( y \) value at \( x = 4 \).
+
+        \begin{align*}
+            &y + dy \\
+            = &-12 - 0.75 \\
+            = &-12.75
+        \end{align*}
+
+        If these values seem familiar to you, then you are catching on. Linearization and differentials are essentially the same process, just with different syntax.
+    \end{enumerate}
+\end{examplebreak}
+
+\section{Related Rates}
+
+Related rates problems are problems that involve multiple variables being differentiated with respect to time. Using contextual knowledge of relations between their derivatives (or, rates of change), you can solve problems. In many ways, these can be considered similar to optimization problems in that they rely on critical thinking.
+
+For a general strategy, use these tips.
+
+\begin{itemize}
+    \item Identify any values given in the problem. This will reduce confusion and make the problem solving process easier.
+    \item List all relations that you know: geometric relations (particularly the Pythagorean Theorem and similar triangles), formulas for volume and area, trigonometric relations, and any other equations that may help with the problem.
+    \item Understand what the problem is asking for you to solve. If you want to solve for the rate at which, for example, the radius of an object changes, you should look for relations involving the radius of that shape.
+    \item Use the units as a guide. These could lead you to understand the problem and help with a potential solution.
+    \item Use context to determine whether you answer makes sense. It might make sense for a car to be speeding at \( 80 \) miles per hour, but when it's moving at \( -500 \) miles per hour, you may want to reconsider your answer.
+\end{itemize}
+
+With these being said, let us take a look at some concrete, practical examples.
+
+\begin{examplebreak}{hot air balloon}
+    A hot air balloon is rising up in the air and is being tracked by a range finder on the ground \( \SI{500}{\meter} \) away horizontally. At the instant the angle at the range finder formed between the ground and the hot air balloon is \( \pi / 4 \), the rate at which the angle is changing is \( \SI{0.14}{\radian\per\minute} \). At this instant, how fast is the balloon rising?
+
+    \vspace{0.3cm}
+
+    At first, this might just look like a wall of text, so let's try to organize the information we have and draw a diagram. We have a range finder on the ground and a hot air balloon \( \SI{500}{\meter} \) away at some unknown height \( h \) in the sky. In addition, at the moment some angle \( \theta = \pi/4 \),
+
+    \[
+        \frac{d\theta}{dt} = \SI{0.14}{\radian\per\minute}
+    \]
+
+    and we are asked to find the value of
+
+    \[
+        \frac{dh}{dt}
+    \]
+
+    This information motivates us to draw the following diagram, which clears up a lot of the problem solving process.
+
+    \begin{figure}[H]
+        \centering
+        \includesvg[width=200pt]{Figures/RelatedRatesTri2.svg}
+    \end{figure}
+
+    Because we have an angle, two sides, and a triangle, the most logical relation that follows is a trigonometric relation. Using the fact that we have opposite and adjacent sides, our relation is
+
+    \begin{align*}
+        \tan{\left( \theta \right)} &= \frac{h}{500} \\
+        \implies 500 \tan{\left( \theta \right)} &= h
+    \end{align*}
+
+    Now all that is left is to differentiate and plug in our known values.
+
+    \begin{align*}
+        500 \sec^2{\left( \theta \right)} \frac{d\theta}{dt} &= \frac{dh}{dt} \\
+        \implies 500 \sec^2{\left( \pi/4 \right)} \left( 0.14 \right) &= \frac{dh}{dt} \\
+        \implies \frac{dh}{dt} &= 500 \cdot 2 \cdot 0.14 \\
+        &= \SI{140}{\meter\per\min}
+    \end{align*}
+
+    Thus, when the angle \( \theta \) is equal to \( \pi/4 \), the balloon is rising at a rate of \( \SI{140}{\meter\per\min} \).
+\end{examplebreak}
+
+\begin{examplebreak}{a police chase}
+    A police cruiser is approaching a right angle intersection from the north while chasing a car that has turned east at the intersection. When the police car is \( \SI{0.6}{\kilo\meter} \) north of the intersection, the car is \( \SI{0.8}{\kilo\meter} \) east. Given that the distance between the two cars is increasing at a rate of \( \SI{20}{\kilo\meter\per\hour} \) when the police car is moving at \( \SI{60}{\kilo\meter\per\hour} \), what is the speed of the car?
+
+    \begin{figure}[H]
+        \centering
+        \includesvg[width=175pt]{Figures/RelatedRatesTri3.svg}
+    \end{figure}
+
+    \vspace{0.3cm}
+
+    Let's organize the information that we have been given. At a certain instant,
+
+    \begin{align*}
+        y = 0.6 &, \quad x = 0.8 \\
+        \frac{dy}{dt} = -60 &, \quad \frac{dz}{dt} = 20 
+    \end{align*}
+
+    and we are asked to find the value of
+
+    \[
+        \frac{dx}{dt}
+    \]
+
+    Seeing that we have a right triangle with all three sides being related, let's use the Pythagorean theorem (this will come up in a lot of problems).
+
+    \begin{align*}
+        x^2 + y^2 &= z^2 \\
+        \implies 2x\frac{dx}{dt} + 2y\frac{dy}{dt} &= 2z\frac{dz}{dt} \\
+        x\frac{dx}{dt} + y\frac{dy}{dt} &= z\frac{dz}{dt}
+    \end{align*}
+
+    Now we can plug in our given values to make things easier.
+
+    \begin{align*}
+        \implies \left( 0.8 \right) \frac{dx}{dt} + \left( 0.6 \right) \left( -60 \right) &= z \left( 20 \right)
+    \end{align*}
+
+    At first, this might seem like we've done something wrong; after all, we have two unknowns. However, if we sit a think for a moment, we actually know how to find \( z \). Returning to our original relation,
+
+    \begin{align*}
+        x^2 + y^2 = z^2
+    \end{align*}
+
+    Since we know both the value of \( x \) and the value of \( y \), we can obtain the value for \( z \) quite easily.
+
+    \begin{align*}
+        0.8^2 + 0.6^2 &= z^2 \\
+        0.64 + 0.36 &= z^2 \\
+        z^2 &= 1 \\
+        \implies z &= 1
+    \end{align*}
+
+    Returning to our original problem, we can now solve for \( dx/dt \).
+
+    \begin{align*}
+        \left( 0.8 \right) \frac{dx}{dt} + \left( 0.6 \right) \left( -60 \right) &= \left( 1 \right) \left( 20 \right) \\
+        0.8 \frac{dx}{dt} - 36 &= 20 \\
+        0.8 \frac{dx}{dt} &= 56 \\
+        \frac{dx}{dt} &= 70
+    \end{align*}
+
+    In short, the car that the police is chasing is going at a speed of \( \SI{70}{\kilo\meter\per\hour} \).
+\end{examplebreak}
+
+\newpage
+
+\begin{examplebreak}{a conical water tank}
+    Water is pouring into a downward facing conical water tank at a rate of \( \SI{9}{\meter^3\per\minute} \). The cone has a height of \( \SI{10}{\meter} \) and a base radius of \( \SI{5}{\meter} \). How fast is the water level rising when the water is \( \SI{6}{\meter} \) deep?
+
+    \begin{figure}[H]
+        \centering
+        \includesvg[width=175pt]{Figures/RelatedRatesCone.svg}
+    \end{figure}
+
+    \vspace{0.3cm}
+
+    For this problem, it might not seem that we're given a lot, but we have all the information needed to work with. We want to find the following
+
+    \[
+        \frac{dh}{dt}
+    \]
+
+    and we are given the following rate.
+
+    \begin{align*}
+        \frac{dV}{dt} = 9
+    \end{align*}
+
+    where \( V \) represents the volume of water in the tank. However, we also know that the volume of a cone is given by formula
+
+    \begin{align*}
+        V = \frac{1}{3} \pi r^2 h
+    \end{align*}
+
+    While we could differentiate now, we would still be left with multiple variables. So, do we have another relation that removes one variable? The answer is yes, by the way of similar triangles. Remembering back to geometry class, we know that if two triangles share at least two angles, they are simliar, and this is the case here. This gives us the following relation between the variables.
+
+    \begin{align*}
+        \frac{r}{5} &= \frac{h}{10} \\
+        \implies r &= \frac{h}{2}
+    \end{align*}
+
+    In addition, it makes much more sense to remove \( r \) because we are trying to find the value of \( dh/dt \). Now, plugging this into our volume formula and differentiating
+
+    \begin{align*}
+        V &= \frac{1}{3} \pi \left( \frac{h}{2} \right)^2 \cdot h \\
+          &= \frac{1}{12} \pi h^3 \\
+        \frac{dV}{dt} &= \frac{1}{4} \pi h^2 \frac{dh}{dt}
+    \end{align*}
+
+    Now we can plug in the two values were given by the problem.
+
+    \begin{align*}
+        9 &= \frac{1}{4} \pi \left( 6 \right)^2 \frac{dh}{dt} \\
+        \implies \frac{dh}{dt} &= \frac{6^2}{36 \pi} \\
+        \frac{dh}{dt} &= \frac{1}{\pi}
+    \end{align*}
+
+    To conclude, the water level in the conical tank is rising at a rate of \( \SI{1/\pi}{\meter\per\minute} \).
+\end{examplebreak}

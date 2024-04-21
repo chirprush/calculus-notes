@@ -1,0 +1,160 @@
+\documentclass[a4paper, 14pt, oneside]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+
+\title{Calculus}
+\author{Rushil Surti}
+\date{\today}
+
+\usepackage{titlesec}
+
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{cancel}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[many]{tcolorbox}
+\usepackage{svg}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{siunitx}
+\usepackage[english]{babel}
+\usepackage[autostyle, english=american]{csquotes}
+\usepackage[OT1]{fontenc}
+\usepackage{float}
+\usepackage{enumitem}
+
+\MakeOuterQuote{"}
+
+\sisetup{per-mode=symbol}
+
+\pgfplotsset{compat=1.16, width=10cm}
+% \pgfplotsset{hole/.style={color=red,fill=examplebg,only marks,mark=*}}
+\pgfplotsset{hole/.style={only marks,mark=*}}
+
+\definecolor{fg}{RGB}{0, 0, 0}
+\definecolor{bg}{RGB}{255, 255, 255}
+
+\definecolor{blue}{RGB}{129, 161, 193}
+\definecolor{darkblue}{RGB}{94, 129, 172}
+
+\definecolor{green}{RGB}{163, 190, 140}
+\definecolor{darkgreen}{RGB}{93, 190, 80}
+
+% \definecolor{cred}{RGB}{208, 135, 112}
+\definecolor{darkred}{RGB}{191, 97, 106}
+
+% \definecolor{yellow}{RGB}{235, 203, 139}
+
+\colorlet{deffg}{darkblue}
+\colorlet{defbg}{blue!20}
+
+\colorlet{thmfg}{green}
+\colorlet{thmbg}{darkgreen!20}
+
+\colorlet{notationfg}{yellow!80!black}
+\colorlet{notationbg}{yellow!30}
+
+\colorlet{examplefg}{Plum}
+\colorlet{examplebg}{Plum!20}
+
+\colorlet{tipfg}{darkred!90!black}
+\colorlet{tipbg}{red!20}
+
+\color{fg}
+\pagecolor{bg}
+
+% \renewcommand*\familydefault{\sfdefault}
+\newcommand{\sectionbreak}{\clearpage}
+
+\makeatletter
+\renewcommand{\@seccntformat}[1]{}
+\makeatother
+
+\titleformat{\chapter}[block]{\normalfont\sffamily\huge}{\chaptertitlename\ \thechapter}{20pt}{\Huge\sffamily\bfseries}
+\titleformat*{\section}{\normalfont\sffamily\huge\bfseries}
+\titlespacing*{\chapter}{0pt}{-20pt}{40pt}
+
+\newtheoremstyle{defstyle}{3pt}{3pt}{}{}{\bfseries\sffamily\color{deffg}}{}{\newline}{}
+\theoremstyle{defstyle}
+
+\newtheorem*{definition_}{Definition}
+
+\newtheoremstyle{rulestyle}{3pt}{3pt}{}{}{\bfseries\sffamily\color{deffg}}{}{\newline}{\thmnote{#3}}
+\theoremstyle{rulestyle}
+
+\newtheorem*{rule_}{Rule}
+
+\newtheoremstyle{thmstyle}{3pt}{3pt}{}{}{\bfseries\sffamily\color{thmfg}}{}{\newline}{\thmnote{#3}}
+\theoremstyle{thmstyle}
+
+\newtheorem*{theorem_}{Theorem}
+
+\newtheoremstyle{notationstyle}{3pt}{3pt}{}{}{\bfseries\sffamily\color{notationfg}}{}{\newline}{}
+\theoremstyle{notationstyle}
+
+\newtheorem*{notation_}{Notation}
+
+\newtheoremstyle{examplestyle}{3pt}{3pt}{}{}{\bfseries\sffamily\color{examplefg}}{}{\newline}{}
+\theoremstyle{examplestyle}
+
+\newtheorem*{example_}{Example}
+
+\newtheoremstyle{tipstyle}{3pt}{3pt}{}{}{\bfseries\sffamily\color{tipfg}}{}{\newline}{}
+\theoremstyle{tipstyle}
+
+\newtheorem*{tip_}{Tip}
+
+\newenvironment{definition}[1]{\begin{tcolorbox}[colback=defbg,colframe=bg]\begin{definition_}[#1]}{\end{definition_}\end{tcolorbox}}
+\newenvironment{rules}[1]{\begin{tcolorbox}[colback=defbg,colframe=bg]\begin{rule_}[#1]}{\end{rule_}\end{tcolorbox}}
+\newenvironment{theorem}[1]{\begin{tcolorbox}[colback=thmbg,colframe=bg]\begin{theorem_}[#1]}{\end{theorem_}\end{tcolorbox}}
+\newenvironment{notation}[1]{\begin{tcolorbox}[colback=notationbg,colframe=bg]\begin{notation_}[#1]}{\end{notation_}\end{tcolorbox}}
+
+% \newenvironment{example}[1]{\begin{tcolorbox}[colback=examplebg,colframe=bg, before upper={\parindent15pt}]\begin{example_}[#1]}{\end{example_}\end{tcolorbox}}
+% \newenvironment{examplebreak}[1]{\begin{tcolorbox}[colback=examplebg,colframe=bg, breakable, before upper={\parindent15pt}]\begin{example_}[#1]}{\end{example_}\end{tcolorbox}}
+
+\newenvironment{example}[1]{\begin{tcolorbox}[colback=examplebg,colframe=bg]\begin{example_}[#1]}{\end{example_}\end{tcolorbox}}
+\newenvironment{examplebreak}[1]{\begin{tcolorbox}[colback=examplebg,colframe=bg, breakable]\begin{example_}[#1]}{\end{example_}\end{tcolorbox}}
+
+\newenvironment{tip}{\begin{tcolorbox}[colback=tipbg,colframe=bg]\begin{tip_}}{\end{tip_}\end{tcolorbox}}
+
+\newcommand{\defterm}[1]{\textbf{\textit{#1}}}
+
+\newcommand{\abs}[1]{\left\lvert {#1} \right\rvert}
+\newcommand{\fp}{f^\prime}
+\newcommand{\fpp}{f^{\prime\prime}}
+\newcommand{\yp}{y^\prime}
+\newcommand{\ypp}{y^{\prime\prime}}
+
+\DeclareMathOperator{\arccsc}{arccsc}
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccot}{arccot}
+
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+% TODO:
+%  + Figure out how downloading and compiling locally is going to work because I'm going to run out of compile time soon lol
+%  - Fix some of the ugly looking stuff that I made in inkscape (look in chapter 5) (maybe use tikz instead?)
+%  - Add some diagrams (and maybe more problems) to the optimizing problem examples in Chapter 5
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\input{Chapter2}
+\input{Chapter3}
+\input{Chapter4}
+\input{Chapter5}
+\input{Chapter6}
+
+\end{document}

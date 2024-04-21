@@ -1,0 +1,7 @@
+*.aux
+*.log
+*.esp
+*.dvi
+*.toc
+**/bin/**
+svg-inkscape/**

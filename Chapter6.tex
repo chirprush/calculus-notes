@@ -1,0 +1,602 @@
+\chapter{Area Under Curves}
+
+\section{Rectangular Approximation Methods}
+
+Whereas the previous chapters have dealt solely with derivatives and tangent lines, this chapter will focus on finding the area under curves and function. While we will soon see how these two concepts are linked, you need not worry about the other concepts we have learned up until now. The only background knowledge this chapter requires is knowledge of how to find the area of rectangles and trapezoids.
+
+\subsection{Why Rectangles?}
+
+The main idea of this chapter is that we can approximate the area under curves and functions by using rectangles. Before getting into the absolute \textit{joy} that is finding the area of rectangles, perhaps it should be explained why mathematicians would use rectangles to sum the area under curves. Let's take a look at the following, pretty standard looking, function.
+
+\begin{figure}[H]
+    \centering
+    \includesvg[width=300pt]{Figures/QuadraticGraph.svg}
+\end{figure}
+
+The question is quite simple. \textbf{How do we find the area under this curve?} The answer, as one would expect isn't the most trivial.
+
+Finding the exact area looks quite difficult, so we'll simplify the problem a bit and say that we want to approximate the area under the curve. We're looking for shapes that we know how to find the area of easily, and we want a reasonable accurate approximation.
+
+One shape that you might look towards for this function specifically is a triangle. After all, this function does look somewhat triangular in shape. However, you might also notice that, as we go further across the \( x \)-axis, this approximation only gets more inaccurate, motivating us to look for a better one.
+
+Quickly discarding any thoughts of circles and polygons with greater than \( 4 \) sides, we arrive at the rectangle. The area of a rectangle is very simple, only needing a width and a height. The height clearly becomes the \( y \) value of the function at some \( x \), but what about the width? The width really can be whatever we want it to be. This property will allow us to play around with it in different ways later. Drawing some rectangles on the graph now leaves us with the following image.
+
+\begin{figure}[H]
+    \centering
+    \includesvg[width=300pt]{Figures/QuadraticLRectangles.svg}
+\end{figure}
+
+Now all that's left is to add up the areas of each individual rectangle. Suppose the width of each rectangle on the base is \( w \) and the rectangles start at \( x \) values \( x_0, x_1, x_3, x_4 \), then the area is simply just
+
+\begin{align*}
+    A = wf \left( x_0 \right) + w f \left( x_1 \right) + w f \left( x_2 \right) + w f \left( x_3 \right) + w f \left( x_4 \right)
+\end{align*}
+
+Or, factoring out the \( w \) from each term
+
+\begin{align*}
+    A = w \Big( f \left( x_0 \right) + f \left( x_1 \right) + f \left( x_2 \right) + f \left( x_3 \right) + f \left( x_4 \right) \Big)
+\end{align*}
+
+But because the \( x \) values are spaced out evenly by the width \( w \), we can also write this as
+
+\begin{align*}
+    A = w \Big( f \left( x_0 + 0w \right) + f \left( x_0 + 1w \right) + f \left( x_0 + 2w \right) + f \left( x_0 + 3w \right) + f \left( x_0 + 4w \right) \Big)
+\end{align*}
+
+Keep this pattern in your mind as we move onto later sections.
+
+One other point to notice is how we drew our rectangles under the curve, with the height corresponding to the function evaluated at the left \( x \) value of each rectangle. We equally could have drawn our rectangles poking above the function, like so
+
+\begin{figure}[H]
+    \centering
+    \includesvg[width=300pt]{Figures/QuadraticRRectangles.svg}
+\end{figure}
+
+So, even within using rectangles, we have different ways of approximating the area under curves. In particular, we'll look at six different RAMs.
+
+\subsection{RAMs}
+
+\begin{definition}{RAM}
+    A \defterm{RAM}, which stands for Rectangular Approximation Method, is, as one might expect, a method of using rectangles to approximate the area under a curve. The six RAMs we will look at are the following:
+
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item \defterm{LRAM}: Left Rectangular Approximation Method
+            \item \defterm{RRAM}: Right Rectangular Approximation Method
+            \item \defterm{MRAM}: Middle Rectangular Approximation Method
+            \item \defterm{Trapezoid}: Using trapezoids to approximate area
+            \item \defterm{Upper}: Using the highest height of the two \( x \) values
+            \item \defterm{Lower}: Using the lowest height of the two \( x \) values
+        \end{itemize}
+    \end{multicols}
+\end{definition}
+
+In order to better see the disparities between these six methods, we'll change functions. Starting with LRAM, the first one introduced to you, this is what it looks like.
+
+\begin{figure}[H]
+    \centering
+    \includesvg[width=250pt]{Figures/LRAM.svg}
+\end{figure}
+
+The definining characteristic of this method is that the height of the rectangles is given by evaluating the function at the left \( x \) value of the rectangle, hence the name Left Rectangular Approximation. Also pay attention to how, when the function is increasing, such as at the first half of the parabola, LRAM gives an underestimate for the area. When the function is decreasing, however, like in the second half of the parabola, LRAM gives an overestimate. Moving onto RRAM, the second approximation we saw,
+
+\begin{figure}[H]
+    \centering
+    \includesvg[width=250pt]{Figures/RRAM.svg}
+\end{figure}
+
+Here, the defining feature is that the height of the rectangles is given by evaluating the function at the right \( x \) value of each rectangle. When the function is increasing, RRAM will overestimate the area, and when the function is decreasing, RRAM will underestimate the area.
+
+Moving onto MRAM, things get slightly more interesting.
+
+\begin{figure}[H]
+    \centering
+    \includesvg[width=250pt]{Figures/MRAM.svg}
+\end{figure}
+
+This time, the height of the rectangle comes from the function evaluated at the midpoint between the left and right \( x \) values. For most functions, this works quite well.
+
+Compared to the previous three which were quite similar in properties and looks, the Trapezoid method is quite the outlier.
+
+\begin{figure}[H]
+    \centering
+    \includesvg[width=250pt]{Figures/Trapezoid.svg}
+\end{figure}
+
+Instead of only picking one height, we use both the left and right heights with the trapezoid to get a much better approximation. \textbf{Note}: In class, you'll probably only use this with linear functions, where it is best suited.
+
+Finally, we have the two other rectangle methods, starting with Upper.
+
+\begin{figure}[H]
+    \centering
+    \includesvg[width=250pt]{Figures/Upper.svg}
+\end{figure}
+
+This approximation method uses the highest out of the two heights for the height of the rectangle. It is quite clear that this will overestimate the area in most cases.
+
+The Lower approximation method is quite similar.
+
+\begin{figure}[H]
+    \centering
+    \includesvg[width=250pt]{Figures/Lower.svg}
+\end{figure}
+
+The height of each rectangle is the lowest out of the two heights on the function. This will underestimate the area in virtually all situations.
+
+\subsection{Calculating Area}
+
+It's great that we know how to graph and represent these rectangles, but our original goal was to find the area under curves, so its time to actually find the area of these rectangles. First we'll introduce some notation for the sums themselves.
+
+\begin{notation}{RAM}
+    The evaluation of a rectangular approximation of a function \( f \left( x \right) \) is represented by
+
+    \[
+        \text{LRAM}_{n} \, f \left( x \right) \text{ from } x = a \text{ to } x = b
+    \]
+
+    where LRAM could also be replaced by RRAM and MRAM and \( n \) represents the amount of rectangles used.
+\end{notation}
+
+Notice how, unlike previous examples, we have a lot more values to play with, namely the start and end points of the sum and also the number of rectangles. Changing these values around also impacts the width of the rectangles and the overall estimate of the area. As a general form, the width of each rectangle in the approximation is given by
+
+\[
+    w = \frac{b - a}{n}
+\]
+
+This intuitively makes sense. If the interval goes from \( x = a \) to \( x = b \), the length of the interval is \( b - a \). In addition, because we want to have \( n \) rectangles, we are partitioning this length into \( n \) pieces of the same length, which is why we divide by \( n \).
+
+Remembering back to what we said earlier, the area of the rectangles summed up is our width \( w \) multiplied by the height, which varies based on what type of approximation method used. For LRAM, the total area would be
+
+\begin{align*}
+    A = w \Big( f \left( a + 0w \right) + f \left( a + 1w \right) + \cdots + f \left( a + \left( n - 2 \right)w \right) + f \left( a + \left( n - 1 \right)w \right) \Big)
+\end{align*}
+
+where we use the left hand \( x \) value of each rectangle. Notice how we don't include \( a + nw \), which is equivalent to \( b \), because of us using the left \( x \) value. For RRAM, the total area is
+
+\begin{align*}
+    A = w \Big( f \left( a + 1w \right) + f \left( a + 2w \right) + \cdots + f \left( a + \left( n - 1 \right)w \right) + f \left( a + nw \right) \Big)
+\end{align*}
+
+where we use the right hand \( x \) value for the height of each rectangle. Notice how we don't include \( a + 0w \), or simply just \( a \).
+
+As you can tell though, writing all of this out might be a bit confusing and entail a lot of parentheses. That's why it's preferred to use a chart of corresponding \( x \) and \( y \) values, which makes it a lot easier to manage.
+
+\begin{example}{using charts to calculate area}
+    Using the following chart of the function \( y = x^3 \), estimate the area using both LRAM and RRAM.
+
+    \begin{center}
+    \begin{tabular}{c|c|c|c|c|c|c}
+        \( x \) & \( 0 \) & \( 2 \) & \( 4 \) & \( 6 \) & \( 8 \) & \( 10 \) \\
+        \hline
+        \( x^3 \) & \( 0 \) & \( 8 \) & \( 64 \) & \( 216 \) & \( 512 \) & \( 1000 \) \\
+    \end{tabular}
+    \end{center}
+
+    \vspace{0.3cm}
+
+    Using what we have learned up until now, this is quite simple. From looking at how the \( x \) values change in each entry, we can deduce that our width \( w \) is \( 2 \). With this in hand, we can now get the heights from the chart and simply do some arithmetic to find the total area. For LRAM, we have the following, remembering to not include the last \( y \) value,
+
+    \begin{align*}
+        A &= 2 \left( 0 + 8 + 64 + 216 + 512 \right) \\
+          &= 2 \left( 800 \right) \\
+          &= 1600
+    \end{align*}
+
+    For RRAM, we have something similar, remembering not to include the first \( y \) value.
+
+    \begin{align*}
+        A &= 2 \left( 8 + 64 + 216 + 512 + 1000 \right) \\
+          &= 2 \left( 1800 \right) \\
+          &= 3600
+    \end{align*}
+\end{example}
+
+\subsection{Interpreting Area and Using Shapes}
+
+It's great that we're able to estimate this area under curves, but what does it represent intuitively? For regular old run-of-the-mill functions, obviously, the area is, well, the area. When we add units and context to the problem though, what does the area represent?
+
+Say we have a function that takes in a value \( t \) in minutes and returns a value \( f \left( t \right) \) in meters per minute. Because the domain \( t \) is in minutes, it follows that the width of the rectangles will also be in minutes. Because the range \( f \left( t \right) \) is in meters per minute, it also follows that height of the rectangles will be in meters per minute. Because we multiply these together to find the area of the rectangles, it turns out that
+
+\[
+    w \> \cancel{\si{\minute}} \cdot f \left( t_0 \right) \> \si{\meter}/\cancel{\si{\minute}} = w f \left( t_0 \right) \si{\meter}
+\]
+
+The units of the area will be the units of the \( x \)-axis multiplied by the units of the \( y \)-axis. This means that the the area under a velocity curve will represent distance or position. The area under an acceleration curve will represent velocity. This is the exact opposite of differentiation, and this isn't just a coincidence, as we'll see later :)
+
+With this in mind, let's see some examples, where we will also build our experience in using other shapes to find exact areas under functions.
+
+\begin{example}{particle position with rectangles}
+    A particle starts at position \( x = 3 \) at \( t = 0 \) and moves with a velocity of \( v \left( t \right) = 2 \). What is the position of the particle at \( t = 4 \)?
+
+    \vspace{0.3cm}
+
+    While you may be able to figure this one out simply by just using some intuition, the point of this example is to show another, calculus-style, way of looking at the problem and help you understand where the calculation comes from.
+
+    For these types of problems, because we are finding areas of shapes, it helps to draw graphs like the one below.
+
+    \begin{figure}[H]
+        \centering
+        \includesvg[width=190pt]{Figures/ParticleRectangle.svg}
+    \end{figure}
+
+    With this diagram, it is now all too clear how to proceed from here. The area under the function from \( t = 0 \) to \( t = 4 \) is \( 8 \) units. This isn't quite our final answer yet, though. Remember, the particle started at \( x = 3 \) and just now moved \( 8 \) units, meaning that the particle is now located at \( x = 11 \).
+\end{example}
+
+\begin{example}{particle position with trapezoids}
+    A particle starts at position \( x = 1 \) and moves with a velocity of \( v \left( t \right) = t + 2 \) from \( t = 0 \) to \( t = 2 \). What is the current position of the particle?
+
+    \vspace{0.3cm}
+
+    Once again, a graph will aid us heavily in this problem.
+
+    \begin{figure}[H]
+        \centering
+        \includesvg[width=100pt]{Figures/ParticleTrapezoid.svg}
+    \end{figure}
+
+    Now we see that the problem has simplified to finding the area of a trapezoid. Because the two bases are simply \( v \left( 0 \right) = 2 \) and \( v \left( 2 \right) = 4 \), the area is simply just
+
+    \begin{align*}
+        A &= \frac{2 + 4}{2} \cdot 2 \\
+          &= 6
+    \end{align*}
+
+    Adding the initial position, we see that the particle is at \( x = 7 \).
+\end{example}
+
+\begin{example}{particle position with circles and rectangles}
+    A particle starts at position \( x = 0 \) and moves with a velocity of \( v \left( t \right) = \sqrt{4 - t^2} + 1 \) from \( t = 0 \) to \( t = 2 \). What is the current position of the particle?
+
+    \vspace{0.3cm}
+
+    Once again we will construct a diagram, this time splitting the area into two sections.
+
+    \begin{figure}[H]
+        \centering
+        \includesvg[width=180pt]{Figures/ParticleCircle.svg}
+    \end{figure}
+
+    From the \( \sqrt{4 - x^2} \) part of the velocity function, we know that this will be a part of a circle with radius \( 2 \). The added \( 1 \) term then adds some area under the circle below as a rectangle. The area of the quarter circle is
+
+    \begin{align*}
+        A_C &= \pi 2^2 / 4 \\
+        &= \pi
+    \end{align*}
+
+    The area of the rectangle is just
+
+    \begin{align*}
+        A_R &= 2 \cdot 1 \\
+            &= 2
+    \end{align*}
+
+    So, the particle is at position \( x = \pi + 2 \).
+\end{example}
+
+\section{Lot's and Lot's of Rectangles}
+
+\subsection{Integrals and Exact Area}
+
+Remember how we were playing around with the various values with the approximations? In those scenarios, we really only worked with a fixed number of rectangles, but what if we left that as a variable? Say we were finding the LRAM of \( y = x^2 \) from \( x = 0 \) to \( x = 5 \) using \( n \) rectangles. What would the area look like? The first thing that we do is calculate the width of each rectangle, which we know to be
+
+\begin{align*}
+    w &= \frac{5 - 0}{n} \\
+      &= \frac{5}{n}
+\end{align*}
+
+Then, by the definition of LRAM, we have the area as being the width times the heights of each of the left sides of the rectangles. In addition, the spacing between each rectangle is given by a number multiplied by the width.
+
+\begin{align*}
+    A &= \frac{5}{n} \Biggl( f \left( 0 + 0 \cdot \frac{5}{n} \right) + f \left( 0 + 1 \cdot \frac{5}{n} \right) + \cdots + f \left( 0 + \left( n - 2 \right) \cdot \frac{5}{n} \right) +f \left( 0 + \left( n - 1 \right) \cdot \frac{5}{n} \right) \Biggr) \\
+    &= \frac{5}{n} \Biggl( \left( 0 + 0 \cdot \frac{5}{n} \right)^2 + \left( 0 + 1 \cdot \frac{5}{n} \right)^2 + \cdots + \left( 0 + \left( n - 2 \right) \cdot \frac{5}{n} \right)^2 + \left( 0 + \left( n - 1 \right) \cdot \frac{5}{n} \right)^2 \Biggr)
+\end{align*}
+
+There isn't much point to simplifying this right now, so this rather unpleasant sum is what we are left with. Whatever the case, this gives us a more general form for the area under the curve. Let's take a moment to see what happens when we mess around with the values of \( n \).
+
+Let's start small with \( n = 3 \).
+
+\begin{figure}[H]
+    \centering
+    \includesvg[width=300pt]{Figures/NRectangles3.svg}
+\end{figure}
+
+Obviously, it's not very accurate. Let's amp this up even further to \( n = 50 \).
+
+\begin{figure}[H]
+    \centering
+    \includesvg[width=300pt]{Figures/NRectangles50.svg}
+\end{figure}
+
+This one looks a little better. We're still underestimating obviously, but by a lot less compared to last time. Let's go even further to \( n = 1000 \) rectangles. Just for fun, y'know.
+
+\begin{figure}[H]
+    \centering
+    \includesvg[width=300pt]{Figures/NRectangles1000.svg}
+\end{figure}
+
+This one looks almost equal to the area under the curve itself, but reasoning tells us that it's still going to be underestimating, just by a \textit{very} small amount.
+
+Hopefully you've noticed a pattern here. The more rectangles we use, the more accurate the sum is. This is quite the interesting thing. Keeping this in mind, what would happen if we used one of our calculus tools to spice things up? What do you think happens when we do this?
+
+\begin{align*}
+    \lim_{n \to \infty} \frac{5}{n} \Biggl( \left( 0 + 0 \cdot \frac{5}{n} \right)^2 + \left( 0 + 1 \cdot \frac{5}{n} \right)^2 + \cdots + \left( 0 + \left( n - 2 \right) \cdot \frac{5}{n} \right)^2 + \left( 0 + \left( n - 1 \right) \cdot \frac{5}{n} \right)^2 \Biggr)
+\end{align*}
+
+That's a lot of rectangles. As we add an infinite amount of rectangles, the error between the actual area and our estimate gets infinitesimally small. This means that we can say that this is \textit{equal} to the exact area under the curve. Writing all of this out is a bit cumbersome, which is why we have a very special syntax for this.
+
+\begin{notation}{integral}
+    To represent the exact area under a function \( f \left( x \right) \) from \( x = a \) to \( x = b \), we use the following notation, called an \defterm{integral}.
+
+    \begin{align*}
+        \int_{ a }^{ b } f \left( x \right) \, dx
+    \end{align*}
+
+    When referring to the function inside the integral, \( f \left( x \right) \), we call it the integrand.
+
+    This is equivalent to (using LRAM or RRAM should converge to the same value as \( n \) goes to infinity):
+
+    \begin{align*}
+        \lim_{n \to \infty} \frac{b - a}{n} \Biggl( f \left( a + 0 \cdot \frac{b - a}{n} \right) + \cdots +  f \left( a + \left( n - 1 \right) \cdot \frac{b - a}{n} \right) \Biggr)
+    \end{align*}
+\end{notation}
+
+In later chapters, we will learn to become very fond of these integrals and gain knowledge on how to calculate them.
+
+\begin{example}{integral}
+    In this case, the sum we are finding is represented by the following integral.
+
+    \[
+        \int_{ 0 }^{ 5 } x^2 \, dx
+    \]
+\end{example}
+
+Returning back, though, we still haven't calculated the actual area. In order to do this, we will simplify a little bit and factor out the height value like so,
+
+\begin{align*}
+    = &\lim_{n \to \infty} \frac{5}{n} \Biggl( \frac{5}{n} \Bigl( 0^2 + 1^2 + \cdots + \left( n - 2 \right)^2 + \left( n - 1 \right)^2 \Bigr) \Biggr) \\
+\end{align*}
+
+Here's where we have to be a bit creative. An interesting fact that we'll leverage right here is that the sum of square numbers up to some number is equal to this expression:
+
+\[
+    \frac{n \left( n + 1 \right) \left( 2n + 1 \right)}{6}
+\]
+
+Plugging this in, using \( \left( n - 1 \right) \) in place of \( n \), we obtain a very nice limit.
+
+\begin{align*}
+    = & \lim_{n \to \infty} \frac{125}{n^3} \cdot \frac{n \left( n - 1 \right) \left( 2n - 1 \right)}{6}
+\end{align*}
+
+Looking at the powers of \( n \) and coefficients, we are actually able to evaluate this limit, and we are left with a rather nice pleasant result.
+
+\begin{align*}
+    = &\frac{125 \cdot 2}{6} \\
+    = &\frac{125}{3}
+\end{align*}
+
+Isn't this amazing? We had the function \( y = x^2 \) and we were able to use our previous knowledge of limits and a little bit of manipulation to find, not an estimate, but the exact value of the area under the curve. This isn't trivial stuff, and this topic resonates at the very heart of calculus.
+
+You'll notice, however, that this method won't work very well for functions that aren't polynomials, so we still don't know how to calculate the integrals of more interesting functions, such as trig functions. Luckily, we will learn a very powerful concept later in this section that will open up many doors towards integration.
+
+\subsection{A Quick Interlude on Sums}
+
+As you've probably seen, the sums we used to represent the integral were quite repetitive and long to write out, which begs the question as to if there is a better way to represent this. It turns out, mathematicians have thought of this before and come up with a very nice syntax for sums.
+
+\begin{notation}{summation}
+    We represent the sum of a function from some integer values to another with the following syntax, using the Greek sigma symbol:
+
+    \[
+        \sum_{i = a}^{n} f \left( i \right) = f \left( a \right) + f \left( a + 1 \right) + \cdots + f \left( n - 1 \right) + f \left( n \right)
+    \]
+
+    The \( a \) value represents the value we start at and the \( n \) value represents the end value we sum to. At each "iteration" we evaluate some function for each value \( i \) between \( a \) and \( n \), and this is the value we sum.
+
+    In this case, \( i \) is merely a "dummy variable." It doesn't have to be called \( i \) necessarily.
+\end{notation}
+
+\begin{example}{a simple sum}
+    A simple exercise to better understand what we're doing is to evaluate the following summation.
+
+    \[
+        \sum_{j = 0}^{3} j + 2
+    \]
+
+    We know that \( j \) goes from \( 0 \) to \( 3 \), and we are summing just those values of \( j \) plus \( 2 \). We can just break this into \( 4 \) different sums.
+
+    \begin{center}
+    When \( j = 0 \), the inside is \( 2 \).
+
+    When \( j = 1 \), the inside is \( 3 \).
+
+    When \( j = 2 \), the inside is \( 4 \).
+
+    When \( j = 3 \), the inside is \( 5 \).
+    \end{center}
+
+    Now all we do is add these cases up to get our answer.
+    \begin{align*}
+        2 + 3 + 4 + 5 &= 14 \\
+        \implies \sum_{j = 0}^{3} j + 2 &= 14
+    \end{align*}
+
+    In actuality, there is no need to write out all the individual cases. This was simply done to illustrate the point.
+\end{example}
+
+\begin{example}{integrals as summations}
+    Let us return to our infinite LRAM example, rewriting everything in our clean new syntax.
+
+    \begin{align*}
+        \int_{ 0 }^{ 5 } x^2 \, dx = \lim_{n \to \infty} \frac{5}{n} \sum_{i = 0}^{n} \left( 0 + i \cdot \frac{5}{n} \right)^2
+    \end{align*}
+
+    This is the same as the long sum that we had before, but far more compact.
+\end{example}
+
+Summations, simply being additions, have some interesting properties.
+
+Just how we can pull out common factors when adding numbers, the same can be done for summations. For example, take a look at the following summation.
+
+\[
+    \sum_{n = 0}^{10} 3 n
+\]
+
+Each term has a \( 3 \) multiplying it, which means that we can pull it out of the summation like so:
+
+\[
+    = 3 \sum_{n = 0}^{10} n
+\]
+
+Note that we didn't pull out the \( n \) term, despite it also being there. Because \( n \) changes with each step of the sum, it isn't really a \textit{common} factor that we can pull out (you can't factor anything out from \( 1 + 2 + 3 + 4 \) can you?).
+
+As well, we can split apart summations based on additions, \textit{provided the bounds are the same}. This is illustrated in the following summation.
+
+\[
+    \sum_{n = 0}^{16} n^2 + n = \sum_{n = 0}^{16} n^2 + \sum_{n = 0}^{16} n
+\]
+
+Because integrals are really just summations in disguise, these properties also follow for integrals. After all, integrals are also simply sums.
+
+Summations are a commonplace occurence in higher level math as they are a powerful generalization of the rather simple operation of addition. Later we will cover the topic of infinite series and summations more closely.
+
+\subsection{Making the Connection Between Derivatives and Integrals}
+
+A while ago, I mentioned how, when we take the derivative of the position function, we get the velocity function, and when we take the integral of the velocity function, we get the position function back. This provided a little hint as to how the derivative and integral are related, and this time we are going to expand on it more.
+
+Consider the following graph of \( f \left( x \right) \) (the black line), and the area under the curve represented by \( A \left( x \right) \). 
+
+\begin{figure}[H]
+    \centering
+    \includesvg[width=300pt]{Figures/DerivativeIntegralLink.svg}
+\end{figure}
+
+From our adventures with LRAM and RRAM, we know that the area under the curve, \( A \left( x \right) \), is made up of infinitely many infinitesimally small rectangles. Each of these rectangles has some width \( dx \), which represents a small change in \( x \). In addition, these rectangles have a height \( f \left( x \right) \). With these points in mind, it would be naturally to see the following.
+
+\[
+    dA = f \left( x \right) dx
+\]
+
+This isn't too complicated, right? A small change in the area under the curve is simply just one of the small rectangles. Here's where the beautiful part comes in. Rearrange the differentials only slightly, dividing \( dx \) on both sides.
+
+\[
+    \frac{dA}{dx} = f \left( x \right)
+\]
+
+Now we're almost there.
+
+Knowing that \( A \left( x \right) \) represents the area under the curve \( f \left( x \right) \), we can represent \( A \left( x \right) \) as the following.
+
+\[
+    A \left( x \right) = \int_{ a }^{ x } f \left( t \right) \, dt
+\]
+
+In combining these two equations, we realize something truly profound.
+
+\[
+    \frac{d}{dx} \int_{ a }^{ x } f \left( t \right) \, dt = f \left( x \right)
+\]
+
+The integral and the derivative are inverse operations! The derivative of the integral of some function is that function. The integral of the derivative of a function is that function (plus a constant). Remember a while earlier when we touched upon \textit{anti}derivatives, which were the \textit{inverse} of derivatives? Integrals \textit{are} antiderivatives (except with a little extra \textit{*pizzazz*} for definite integrals)!
+
+This discovery gives us a myriad of tools to work with for evaluating integrals and finding areas under curves, something we previously thought to be impossible.
+
+\subsection{Thinking about Integrals and Area}
+
+Now that we've gained such a useful tool, let us apply it and look more closely at what integrals actually are and how we evaluate them. Here, a small distinction has to be made.
+
+\begin{definition}{definite integral}
+    A \defterm{definite integral} is an integral that has bounds given. This represents the area under a function between the bounds.
+
+    \[
+        \int_{ a }^{ b } f \left( x \right) \, dx
+    \]
+\end{definition}
+
+When we evaluate definite integrals like these, we find the general antiderivative \( F \left( x \right) \) and plug it into the top and bottom bound and subtract like so:
+
+\[
+    \int_{ a }^{ b } f \left( x \right) \, dx = F \left( b \right) - F \left( a \right)
+\]
+
+Notice the lack of a constant of integration. While we could write one, you can quickly see why we don't usually do so.
+
+\[
+    \int_{ a }^{ b } f \left( x \right) \, dx = F \left( b \right) + \cancel{C} - F \left( a \right) - \cancel{C}
+\]
+
+The constants are the same, so they cancel out.
+
+These definite integrals are what we are currently familiar with, but it turns out integrals do not actually need to have explicit bounds.
+
+\begin{definition}{indefinite integral}
+    An \defterm{indefinite integral} is an integral without bounds any bounds given. This is the general antiderivative of the integrand function (sometimes also denoted by a capital letter).
+
+    \[
+        \int f \left( x \right) \, dx = F \left( x \right) + C
+    \]
+\end{definition}
+
+The intuition behind what exactly these antiderivatives represent at first is a bit fuzzy, but after a bit of reasoning, it becomes far clearer what they are and how they connect with definite integrals.
+
+The general integral or antiderivative of some function \( f \left( x \right) \) is too a function of \( x \) defined as the following.
+
+\[
+    \int f \left( x \right) \, dx = \int_{ a }^{ x } f \left( t \right) \, dt
+\]
+
+In this case, \( a \) is some point that simply depends on the function. So, in short, the general antiderivative is the area from a fixed point to \( x \). Using this knowledge along with a visual helps us understand why we subtract the antiderivative evaluated at the top and bottom bound to gain the area.
+
+Consider this graph of some function \( f \left( x \right) \). Say that we wanted to find the area under the curve from \( a \) to \( b \). In other words, we want to evaluate
+
+\[
+    \int_{ a }^{ b } f \left( x \right) \, dx
+\]
+
+We can represent this on the graph like so, shading the region in green.
+
+\begin{figure}[H]
+    \centering
+    \includesvg[width=300pt]{Figures/DefiniteIntegralMeaning1.svg}
+\end{figure}
+
+How would we represent this area? We can do so by looking at the individual values of the antiderivative at the bounds. Consider the value of
+
+\[
+    F \left( b \right) = \int_{ 0 }^{ b } f \left( x \right) \, dx
+\]
+
+This can be graphically represented as the following region, shaded in blue.
+
+\begin{figure}[H]
+    \centering
+    \includesvg[width=300pt]{Figures/DefiniteIntegralMeaning2.svg}
+\end{figure}
+
+In addition, the antiderivative at the lower bound
+
+\[
+    F \left( a \right) = \int_{ 0 }^{ a } f \left( x \right) \, dx
+\]
+
+can be represented by this region, shaded in yellow.
+
+\begin{figure}[H]
+    \centering
+    \includesvg[width=300pt]{Figures/DefiniteIntegralMeaning3.svg}
+\end{figure}
+
+Now it is quite clear to see that we can subtract these areas to gain our green area.
+
+\begin{align*}
+    \textcolor{blue}{\text{Blue Area}} &= \textcolor{notationfg}{\text{Yellow Area}} + \textcolor{green}{\text{Green Area}} \\
+    \textcolor{green}{\text{Green Area}} &= \textcolor{blue}{\text{Blue Area}} - \textcolor{notationfg}{\text{Yellow Area}} \\
+    \textcolor{green}{\int_{ a }^{ b } f \left( x \right) \, dx} &= \textcolor{blue}{\int_{ 0 }^{ b } f \left( x \right) \, dx} - \textcolor{notationfg}{\int_{ 0 }^{ a } f \left( x \right) \, dx} \\
+    \textcolor{green}{\int_{ a }^{ b } f \left( x \right) \, dx} &= \textcolor{blue}{F \left( b \right)} - \textcolor{notationfg}{F \left( a \right)}
+\end{align*}
+
+This is the reason why the integral is equal to what it is and how it relates to the antiderivative.
+
+\subsection{Total and Signed Area}
+
+
